@@ -1,7 +1,5 @@
 # personal-site
 
----
-
 This repository contains the code for my personal website. This site serves as a showcase of my skills, projects, and professional background.
 
 ### Tools Used
@@ -12,8 +10,6 @@ This repository contains the code for my personal website. This site serves as a
 - [Docker](https://www.docker.com/)
 
 # Getting Started
- 
-***
 
 ### Running Locally With Docker
 
