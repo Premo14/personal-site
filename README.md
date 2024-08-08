@@ -14,8 +14,7 @@ This repository contains the code for my personal website. This site serves as a
 ### Running Locally With Docker
 
 1. **Install Prerequisites**:
-   - [Docker](https://www.docker.com/): Ensure that Docker is installed on your system. Docker provides the tools needed to build and run Docker containers. You can download and install Docker Desktop from the [official installation page](https://docs.docker.com/engine/install/) for your operating system (Windows, macOS, or Linux). Follow the installation instructions provided on Docker's website.
-
+   - [Docker](https://www.docker.com/): Ensure that Docker is installed on your system. Docker provides the tools needed to build and run Docker containers. You can download and install Docker Desktop from the [official installation page](https://docs.docker.com/engine/install/) for your operating system (Windows, macOS, or Linux).
 
 2. **Clone the Repository**:
    ```bash
@@ -33,7 +32,7 @@ This repository contains the code for my personal website. This site serves as a
 ### Running Locally Without Docker
 
 1. **Install Prerequisites**:
-   - [Node.js](https://nodejs.org/): Ensure that Node.js is installed on your system. Node.js includes [npm](https://www.npmjs.com/) (Node Package Manager), which is required to manage project dependencies. You can download and install it from the [official installation page](https://nodejs.org/en/download/package-manager). Make sure you have a version compatible with your project (usually the latest LTS version is recommended).
+   - [Node.js](https://nodejs.org/): Ensure that Node.js is installed on your system. Node.js includes [npm](https://www.npmjs.com/) (Node Package Manager), which is required to manage project dependencies. You can download and install it from the [official installation page](https://nodejs.org/en/download/package-manager).
 
 2. **Clone the Repository**:
    ```bash
