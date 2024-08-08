@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Stack } from "@chakra-ui/react";
 import Navbar from "./components/shared/Navbar";
-import Home from "./components/pages/Home";
+import Home from "./components/pages/Home/Home.tsx";
 import Resume from "./components/pages/Resume";
 import Contact from "./components/pages/Contact";
 import Projects from "./components/pages/Projects";
