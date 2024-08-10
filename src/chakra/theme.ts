@@ -9,12 +9,19 @@ const config: ThemeConfig = {
 const theme = extendTheme({
     config,
     styles: {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         global: (props: any) => ({
             body: {
                 backgroundColor: mode("gray.500", "")(props),
             },
+
         }),
+    },
+    components: {
+        Link: {
+            baseStyle: (props: any) => ({
+                color: mode("blue.700", "teal.500")(props),
+            }),
+        },
     },
 });
 

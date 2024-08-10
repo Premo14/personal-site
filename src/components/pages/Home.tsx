@@ -1,10 +1,17 @@
 import React from 'react';
-import {Stack, Text, Box} from "@chakra-ui/react";
+import { Stack, Text, Box } from "@chakra-ui/react";
 
 const Home: React.FC = () => {
     return (
-        <Stack pt={20} display="flex" flexDirection="column" alignItems="center"
-               textAlign="center" w="100vw" spacing={4}
+        <Stack
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            textAlign="center"
+            w="100%"
+            spacing={4}
+            p={4}
+            flex="1"
         >
             <Box maxW="900px" w="100%" px={4}>
                 <Text fontSize="xxx-large" as="b">
@@ -20,7 +27,7 @@ const Home: React.FC = () => {
                     I found on the internet.
                 </Text>
             </Box>
-            <img src="/public/meme.jpg" alt="meme" />
+            <img src="/meme.jpg" alt="meme" style={{ maxWidth: '80vw' }} />
         </Stack>
     );
 };

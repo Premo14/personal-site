@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { initThreeJS } from './threeScene'; // Adjust the import path if necessary
+import { initThreeJS } from './threeScene.ts'; // Adjust the import path if necessary
 
 const ThreeScene: React.FC = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
