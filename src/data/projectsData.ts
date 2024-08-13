@@ -18,7 +18,7 @@ export const projects: Project[] = [
             " seeing how light hits its surface.",
         thumbnail: "/public/projects/thumbnails/spinTheBall.png",
         images: [],
-        detailsUrl: "/spin-the-ball",
+        detailsUrl: "spin-the-ball",
         githubUrl: "https://github.com/Premo14/ThreeJsTutorial",
         tools: "JavaScript, HTML, CSS, Three.JS, Gsap"
     },
@@ -30,7 +30,7 @@ export const projects: Project[] = [
             "The backend is built in Go and uses MongoDB.",
         thumbnail: "/public/projects/thumbnails/todoApp.png",
         images: [],
-        detailsUrl: "/todo-app",
+        detailsUrl: "todo-app",
         githubUrl: "https://github.com/Premo14/react-go-tutorial",
         tools: "Go, TypeScript/.tsx, HTML, CSS, React/Vite, MongoDB, Fiber, ChakraUI " +
             "ESLint"
@@ -52,7 +52,7 @@ export const projects: Project[] = [
             "/public/projects/jokesApp/jokesRegister.png",
             "/public/projects/jokesApp/jokesSearch.png"
         ],
-        detailsUrl: "/jokes-app",
+        detailsUrl: "jokes-app",
         githubUrl: "https://github.com/Premo14/JokesApp/tree/main",
         tools: "C#, ASP.NET, HTML, CSS, Razor, SQLite, Entity, MVC, Bootstrap"
     },
@@ -65,7 +65,7 @@ export const projects: Project[] = [
             "data.",
         thumbnail: "/public/projects/thumbnails/travlr-app.png",
         images: [],
-        detailsUrl: "/travlr-app",
+        detailsUrl: "travlr-app",
         githubUrl: "https://github.com/Premo14/cs465-fullstack/tree/project",
         tools: "JavaScript, HTML, CSS, MongoDB, Express, Angular, Node.JS, " +
             "Handlebars"
@@ -79,7 +79,7 @@ export const projects: Project[] = [
             "adirondack region of NY.",
         thumbnail: "/public/projects/thumbnails/adk-tourism.png",
         images: [],
-        detailsUrl: "/adk-tourism-app",
+        detailsUrl: "adk-tourism-app",
         githubUrl: "https://github.com/Premo14/Totality-api",
         tools: "PHP, TypeScript, HTML, CSS, Kotlin, Laravel, Angular, " +
             "Android Studio, Docker"

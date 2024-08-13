@@ -6,6 +6,7 @@ import Resume from "./components/pages/Resume";
 import Projects from "./components/pages/Projects";
 import Footer from "./components/shared/Footer";
 import ProjectLargeCard from "./components/projects/ProjectLargeCard.tsx";
+import ProjectDetails from "./components/projects/ProjectDetails.tsx";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                         <Route path="/resume" element={<Resume />} />
                         <Route path="/projects" element={<Projects />} />
                         <Route path="/project/:id" element={<ProjectLargeCard />} />
+                        <Route path="/projects/:detailsUrl" element={<ProjectDetails />} />
                     </Routes>
                 </Stack>
                 <Footer />

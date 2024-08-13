@@ -6,7 +6,7 @@ import React from "react";
 
 const Projects: React.FC = () => {
     return (
-        <Box>
+        <Box mb={5}>
             <Flex justifyContent="center" textAlign="center">
                 <Text m={4} fontSize="x-large" maxW="1000px" minW="700px">
                     Projects that can run in React are hosted on this site, but because

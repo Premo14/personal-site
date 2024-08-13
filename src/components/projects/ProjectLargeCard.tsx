@@ -20,7 +20,7 @@ const ProjectLargeCard: React.FC = () => {
                 {project.title}
             </Text>
             <Text mt={2}>{project.description}</Text>
-            <Button mt={4} onClick={() => navigate(project.detailsUrl)}>
+            <Button mt={4} onClick={() => navigate("/projects/" + project.detailsUrl)}>
                 View More Details
             </Button>
         </Box>
