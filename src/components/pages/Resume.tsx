@@ -66,7 +66,7 @@ const Resume: React.FC = () => {
 
                 <Divider />
 
-                {/* Academic/Notable Projects */}
+                {/* Academic/Notable projects */}
                 <Box>
                     <Heading as="h2" size="lg" mb={2}>
                         Academic/Notable Projects
