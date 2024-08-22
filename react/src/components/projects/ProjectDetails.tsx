@@ -9,7 +9,6 @@ const ProjectDetails: React.FC = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-    // Find the project by detailsUrl
     const project = detailsUrl ? projects.find(p => p.detailsUrl === detailsUrl) : undefined;
 
     if (!project) return <div>Project not found</div>
@@ -32,16 +31,16 @@ const ProjectDetails: React.FC = () => {
                         <Box
                             key={index}
                             position="relative"
-                            width="300px" // Adjust the width as needed
+                            width="300px"
                             height="100px"
-                            pb="1" // 16:9 aspect ratio
+                            pb="1"
                             overflow="clip"
                             borderRadius="md"
                         >
                             <Image
                                 src={img}
                                 alt={`${project.title} image ${index}`}
-                                transition="transform 0.2s, box-shadow 0.2s" // Smooth transition for scaling and shadow
+                                transition="transform 0.2s, box-shadow 0.2s"
                                 cursor="pointer"
                                 onClick={() => {
                                     setSelectedImage(img);
@@ -49,7 +48,7 @@ const ProjectDetails: React.FC = () => {
                                 }}
                                 _hover={{
                                     transform: "scale(1.05)",
-                                    zIndex: 10000, // Ensures the card is on top of other elements
+                                    zIndex: 10000,
                                 }}
                             />
                         </Box>
@@ -65,9 +64,9 @@ const ProjectDetails: React.FC = () => {
                             <Image
                                 src={selectedImage}
                                 alt="Enlarged view"
-                                objectFit="contain" // Ensures the image fits within the container
-                                maxW="90vw" // 90% of the viewport width
-                                maxH="90vh" // 90% of the viewport height
+                                objectFit="contain"
+                                maxW="90vw"
+                                maxH="90vh"
                             />
                         )}
                     </ModalBody>
