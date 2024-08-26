@@ -1,13 +1,13 @@
 import {Container, Stack, Text} from "@chakra-ui/react";
 import React from "react";
+import TodoForm from "./TodoForm.tsx";
 
 
 const Todo: React.FC = () => {
     return(
         <Stack>
-            <Text fontSize="3xl" textAlign="center">Todo App Runs Here</Text>
             <Container>
-                {/*<TodoForm />*/}
+                <TodoForm />
                 {/*<TodoList />*/}
             </Container>
         </Stack>

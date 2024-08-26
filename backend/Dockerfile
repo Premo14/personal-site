@@ -11,8 +11,14 @@ RUN go mod download
 # Copy the source code
 COPY . .
 
+# List files in the working directory to verify
+RUN ls -l /app
+
 # Build the Go application
-RUN go build -o main .
+RUN go build -o main . || { echo 'Build failed'; exit 1; }
+
+# List files after build to verify binary presence
+RUN ls -l /app
 
 # Use a minimal base image for the final stage
 FROM debian:bullseye-slim
@@ -32,4 +38,5 @@ COPY --from=builder /app/main .
 EXPOSE 8080
 
 # Command to run the executable
-CMD ["./main"]
+CMD ["sh", "-c", "./main && tail -f /dev/null"]
+#CMD ["sh", "-c", "./main & wait"]

@@ -40,7 +40,7 @@ export const projects: Project[] = [
     },
     {
         id: 3,
-        title: "todo App",
+        title: "Todo App",
         summary: "Yes, there are much more useful apps on your phone.",
         description: "The todo App is an application where you can " +
             "add todos to a list and mark them as completed or " +
