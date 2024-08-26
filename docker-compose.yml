@@ -34,7 +34,7 @@ services:
       - mysql
     networks:
       - app-network
-    restart: unless-stopped
+    restart: no
 
   mysql:
     image: mysql:8.0
