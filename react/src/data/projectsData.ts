@@ -21,7 +21,8 @@ export const projects: Project[] = [
         images: [],
         detailsUrl: "/secret-path/why-are-you-here",
         githubUrl: "https://github.com/Premo14/personal-site",
-        tools: "",
+        tools: "Go, Gorm, Gorilla Mux, MySQL, TypeScript/.tsx, HTML, CSS, " +
+            "React, Vite, ChakraUI, TanStack, Docker, GitHub",
         componentKey: "home"
     },
     {
@@ -49,7 +50,7 @@ export const projects: Project[] = [
         images: [],
         detailsUrl: "todo-app",
         githubUrl: "https://github.com/Premo14/react-go-tutorial",
-        tools: "Go, TypeScript/.tsx, HTML, CSS, React/Vite, MongoDB, Fiber, ChakraUI " +
+        tools: "Go, TypeScript/.tsx, HTML, CSS, React/Vite, MongoDB, Fiber, ChakraUI, " +
             "ESLint",
         componentKey: "todo"
     },
