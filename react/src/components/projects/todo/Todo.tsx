@@ -3,7 +3,6 @@ import React from "react";
 import TodoForm from "./TodoForm.tsx";
 import TodoList from "./TodoList.tsx";
 
-
 const Todo: React.FC = () => {
     return(
         <Stack>

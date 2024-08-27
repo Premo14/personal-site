@@ -1,9 +1,9 @@
 import {Button, Container, Flex, Input, Spinner, Text} from "@chakra-ui/react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { IoMdAdd } from "react-icons/io";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
 
-const BASE_URL = "http://localhost:8080";
+const BASE_URL = "http://localhost:8080/api";
 
 const TodoForm = () => {
     const [newTodo, setNewTodo] = useState("");
@@ -54,7 +54,7 @@ const TodoForm = () => {
                         ref={(input) => input && input.focus()}
                     />
                     <Button
-                        mx={2}
+                         mx={2}
                         type='submit'
                         _active={{
                             transform: "scale(.97)",

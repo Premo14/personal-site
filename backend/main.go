@@ -4,6 +4,7 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/premo14/personal-site/database"
 	"github.com/premo14/personal-site/todo"
+	"github.com/rs/cors"
 	"log"
 	"net/http"
 	"os"
@@ -32,12 +33,19 @@ func main() {
 		router.PathPrefix("/").Handler(fs)
 	}
 
+	corsHandler := cors.New(cors.Options{
+		AllowedOrigins:   []string{"http://localhost:3000"},
+		AllowCredentials: true,
+		AllowedMethods:   []string{"GET", "POST", "PATCH", "DELETE", "OPTIONS"},
+		AllowedHeaders:   []string{"Content-Type", "Authorization"},
+	})
+
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
 	}
 
-	// Start the server
+	// Start the server with CORS handler
 	log.Printf("Starting server on port %s", port)
-	log.Fatal(http.ListenAndServe("0.0.0.0:"+port, router))
+	log.Fatal(http.ListenAndServe("0.0.0.0:"+port, corsHandler.Handler(router)))
 }

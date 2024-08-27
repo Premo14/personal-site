@@ -48,7 +48,7 @@ func UpdateTodo(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Todo not found", http.StatusNotFound)
 		return
 	}
-	todo.Completed = true
+	todo.Completed = !todo.Completed
 	if err := database.GetDB().Save(&todo).Error; err != nil {
 		http.Error(w, "Failed to update todo", http.StatusInternalServerError)
 		return

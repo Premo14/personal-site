@@ -36,7 +36,7 @@ export default function Navbar() {
                     </Link>
                 </Flex>
                 <Flex alignItems="center" gap={3}>
-                    <Link to="https://github.com/premo14/personal-site" target="_blank" colorScheme="gray">
+                    <Link to="https://github.com/premo14/personal-site" target="_blank">
                         Source Code
                     </Link>
                     <Button onClick={toggleColorMode}>
