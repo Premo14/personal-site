@@ -22,6 +22,9 @@
 - [Git](https://git-scm.com/)
 - [Docker](https://www.docker.com/)
 
+## Production Tools
+- [AWS](https://aws.amazon.com/)
+
 ## Running the Web App Locally with Docker
 
 Docker is a prerequisite for running the app using Docker. You can install Docker by following the instructions on the [Docker Installation Guide](https://docs.docker.com/get-docker/).
