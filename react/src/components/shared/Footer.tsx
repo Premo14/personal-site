@@ -1,4 +1,4 @@
-import { Box, useColorModeValue, Text, Stack, Button } from "@chakra-ui/react";
+import { Box, useColorModeValue, Text, Stack, Button } from '@chakra-ui/react';
 
 export default function Footer() {
     return (
@@ -22,7 +22,7 @@ export default function Footer() {
                     <Button as="a" href="https://github.com/premo14" target="_blank" colorScheme="gray">
                         GitHub
                     </Button>
-                    <Button as="a" href="mailto:ajaipremo@gmail.com" colorScheme="blue">
+                    <Button as="a" href="mailto:ajaipremo@gmail.com" target="_blank" colorScheme="blue">
                         Email
                     </Button>
                 </Stack>
