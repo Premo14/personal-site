@@ -14,9 +14,16 @@ var DB *gorm.DB
 var err error
 
 func InitDatabase() error {
-	err = godotenv.Load(".env")
-	if err != nil {
-		log.Fatal("Error loading .env file:", err)
+	if os.Getenv("GO_ENV") == "development" {
+		err = godotenv.Load(".env.development")
+		if err != nil {
+			log.Fatal("Error loading .env.development file:", err)
+		}
+	} else {
+		err = godotenv.Load(".env.production file:")
+		if err != nil {
+			log.Fatal("Error loading .env.production file:", err)
+		}
 	}
 
 	dsn := os.Getenv("MYSQL_DSN")

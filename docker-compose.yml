@@ -11,6 +11,9 @@ services:
       - /app/node_modules
     ports:
       - "3000:3000"
+    environment:
+      - React_ENV=development
+      #- React_ENV=production
     command: npm run dev
     networks:
       - app-network
@@ -30,11 +33,13 @@ services:
       - DB_USER=user
       - DB_PASSWORD=userpass
       - DB_NAME=personal-site-db
+      - GO_ENV=development
+    # - GO_ENV=production
     depends_on:
       - mysql
     networks:
       - app-network
-    restart: no
+    restart: always
 
   mysql:
     image: mysql:8.0
@@ -49,12 +54,12 @@ services:
       - mysql-data:/var/lib/mysql
     networks:
       - app-network
-    healthcheck:
-      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 30s
+#    healthcheck:
+#      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+#      interval: 10s
+#      timeout: 5s
+#      retries: 5
+#      start_period: 30s
 
 volumes:
   mysql-data:
