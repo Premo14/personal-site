@@ -1,7 +1,48 @@
-version: '3.8'
-
 services:
+  mysql:
+    image: mariadb:10
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      MYSQL_DATABASE: $MYSQL_DATABASE
+      MYSQL_USER: $MYSQL_USER
+      MYSQL_PASSWORD: $MYSQL_PASSWORD
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -p$MYSQL_ROOT_PASSWORD"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    container_name: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+    ports:
+      - "${BACKEND_PORT}:${BACKEND_PORT}"
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: $MYSQL_PORT
+      MYSQL_USER: $MYSQL_USER
+      MYSQL_PASSWORD: $MYSQL_PASSWORD
+      MYSQL_DATABASE: $MYSQL_DATABASE
+      GO_ENV: $GO_ENV
+      BACKEND_PORT: $BACKEND_PORT
+    depends_on:
+      - mysql
+    networks:
+      - app-network
+    restart: always
+
   frontend:
+    container_name: frontend
     build:
       context: ./react
       dockerfile: Dockerfile
@@ -10,59 +51,21 @@ services:
       - ./react:/app
       - /app/node_modules
     ports:
-      - "3000:3000"
+      - "${FRONTEND_PORT}:${FRONTEND_PORT}"
     environment:
-      - React_ENV=development
-      #- React_ENV=production
+      REACT_ENV: $REACT_ENV
+      FRONTEND_PORT: $FRONTEND_PORT
     command: npm run dev
     networks:
       - app-network
 
-  backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    working_dir: /app
-    volumes:
-      - ./backend:/app
-    ports:
-      - "8080:8080"
-    environment:
-      - DB_HOST=mysql
-      - DB_PORT=3306
-      - DB_USER=user
-      - DB_PASSWORD=userpass
-      - DB_NAME=personal-site-db
-      - GO_ENV=development
-    # - GO_ENV=production
-    depends_on:
-      - mysql
-    networks:
-      - app-network
-    restart: always
-
-  mysql:
-    image: mysql:8.0
-    ports:
-      - "3305:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpass
-      MYSQL_DATABASE: personal-site-db
-      MYSQL_USER: user
-      MYSQL_PASSWORD: userpass
-    volumes:
-      - mysql-data:/var/lib/mysql
-    networks:
-      - app-network
-#    healthcheck:
-#      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
-#      interval: 10s
-#      timeout: 5s
-#      retries: 5
-#      start_period: 30s
-
 volumes:
   mysql-data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./data
+      o: bind
 
 networks:
   app-network:

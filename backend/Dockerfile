@@ -29,7 +29,7 @@ WORKDIR /app
 COPY --from=builder /app/main .
 
 # Expose the port the app runs on
-EXPOSE 8080
+EXPOSE ${BACKEND_PORT:-8080}
 
 # Command to run the executable
 #CMD ["sh", "-c", "./main && tail -f /dev/null"] # for debugging

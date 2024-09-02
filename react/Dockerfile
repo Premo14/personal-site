@@ -13,8 +13,8 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
-# Expose port for the development server
-EXPOSE 3000
+# Expose port for the development server, but fall back to port 3000 if not set
+EXPOSE ${FRONTEND_PORT:-3000}
 
 # Run the development server
 CMD ["npm", "run", "dev"]
