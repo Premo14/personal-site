@@ -2,49 +2,61 @@ provider "aws" {
   region = var.aws_region
 }
 
-resource "aws_instance" "demo_app" {
-  ami           = var.ami_id
-  instance_type = var.instance_type
-  key_name      = var.key_name
-
-  // Set security group to allow traffic on port 80
-  vpc_security_group_ids = [aws_security_group.allow_http.id]
-
-  user_data = file("user_data.sh")
+# VPC
+resource "aws_vpc" "main" {
+  cidr_block = var.vpc_cidr
 
   tags = {
-    Name = "DemoAppEC2"
-  }
-
-  provisioner "file" {
-    source      = "docker-compose.yml"
-    destination = "/home/ec2-user/docker-compose.yml"
-    connection {
-      type        = "ssh"
-      user        = "ec2-user"
-      private_key = file(var.private_key_path)
-      host        = self.public_ip
-    }
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "sudo docker-compose -f /home/ec2-user/docker-compose.yml up -d"
-    ]
-    connection {
-      type        = "ssh"
-      user        = "ec2-user"
-      private_key = file(var.private_key_path)
-      host        = self.public_ip
-    }
+    Name = "PersonalSiteVPC"
   }
 }
 
+# Subnet
+resource "aws_subnet" "public" {
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = var.subnet_cidr
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = "PersonalSiteSubnet"
+  }
+}
+
+# Internet Gateway
+resource "aws_internet_gateway" "main" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = "PersonalSiteInternetGateway"
+  }
+}
+
+# Route Table
+resource "aws_route_table" "main" {
+  vpc_id = aws_vpc.main.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.main.id
+  }
+
+  tags = {
+    Name = "PersonalSiteRouteTable"
+  }
+}
+
+# Associate Route Table with Subnet
+resource "aws_route_table_association" "main" {
+  subnet_id      = aws_subnet.public.id
+  route_table_id = aws_route_table.main.id
+}
+
+# Security Group to allow HTTP access
 resource "aws_security_group" "allow_http" {
-  name_prefix = "allow_http"
+  vpc_id = aws_vpc.main.id
 
   ingress {
-    description = "HTTP traffic"
+    description = "Allow HTTP traffic"
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
@@ -56,5 +68,25 @@ resource "aws_security_group" "allow_http" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "PersonalSiteSecurityGroup"
+  }
+}
+
+# EC2 Instance
+resource "aws_instance" "demo_app" {
+  ami           = var.ami_id
+  instance_type = var.instance_type
+  key_name      = var.key_name
+
+  subnet_id = aws_subnet.public.id
+  vpc_security_group_ids = [aws_security_group.allow_http.id]
+
+  user_data = file("user_data.sh")
+
+  tags = {
+    Name = "PersonalSiteEC2Instance"
   }
 }
