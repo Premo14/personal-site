@@ -14,6 +14,14 @@ sudo chmod +x /usr/local/bin/docker-compose
 # Install Git
 sudo yum install git -y
 
+# Set up SSH for GitHub
+mkdir -p /home/ec2-user/.ssh
+echo "${SSH_PRIVATE_KEY}" > /home/ec2-user/.ssh/id_rsa
+chmod 600 /home/ec2-user/.ssh/id_rsa
+
+# Add GitHub to known hosts to prevent SSH verification prompt
+ssh-keyscan github.com >> /home/ec2-user/.ssh/known_hosts
+
 # Clone the GitHub repository
 cd /home/ec2-user
 git clone git@github.com:Premo14/personal-site.git
