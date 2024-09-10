@@ -10,7 +10,7 @@ lerna-debug.log*
 .env
 
 data
-*.terraform
+.terraform
 node_modules
 dist
 dist-ssr
