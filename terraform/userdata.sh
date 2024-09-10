@@ -28,4 +28,16 @@ git clone git@github.com:Premo14/personal-site.git
 
 # Change to the cloned directory and run Docker Compose
 cd personal-site
+
+# Create the .env file with necessary environment variables
+cat <<EOF > /home/ec2-user/personal-site/.env
+MYSQL_ROOT_PASSWORD=rootpass
+MYSQL_DATABASE=personal-site-db
+MYSQL_USER=your_user
+MYSQL_PASSWORD=userpass
+GO_ENV=production
+BACKEND_PORT=8080
+FRONTEND_PORT=80
+EOF
+
 sudo docker-compose up -d
