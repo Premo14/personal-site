@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/gorilla/mux"
 	"github.com/premo14/personal-site/database"
 	"github.com/premo14/personal-site/todo"
@@ -33,14 +34,23 @@ func main() {
 		router.PathPrefix("/").Handler(fs)
 	}
 
+	frontendPort := os.Getenv("FRONTEND_PORT")
+	if frontendPort == "" {
+		frontendPort = "3000" // Default to 3000 if the variable is not set
+	}
+
+	// Construct the localhost URL with the correct port
+	localhostURL := fmt.Sprintf("http://localhost:%s", frontendPort)
+
+	// Setup CORS with the dynamically generated localhost URL
 	corsHandler := cors.New(cors.Options{
-		AllowedOrigins:   []string{"http://localhost:3000", "ajaipremo.com"},
+		AllowedOrigins:   []string{localhostURL, "https://ajaipremo.com"}, // Add the dynamically generated localhost URL
 		AllowCredentials: true,
 		AllowedMethods:   []string{"GET", "POST", "PATCH", "DELETE", "OPTIONS"},
 		AllowedHeaders:   []string{"Content-Type", "Authorization"},
 	})
 
-	port := os.Getenv("PORT")
+	port := os.Getenv("BACKEND_PORT")
 	if port == "" {
 		port = "8080"
 	}

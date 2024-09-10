@@ -2,7 +2,6 @@ package database
 
 import (
 	"fmt"
-	"github.com/joho/godotenv"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"log"
@@ -14,19 +13,12 @@ var DB *gorm.DB
 var err error
 
 func InitDatabase() error {
-	if os.Getenv("GO_ENV") == "development" {
-		err = godotenv.Load(".env.development")
-		if err != nil {
-			log.Fatal("Error loading .env.development file:", err)
-		}
-	} else {
-		err = godotenv.Load(".env.production file:")
-		if err != nil {
-			log.Fatal("Error loading .env.production file:", err)
-		}
-	}
-
-	dsn := os.Getenv("MYSQL_DSN")
+	dbUser := os.Getenv("MYSQL_USER")
+	dbPassword := os.Getenv("MYSQL_PASSWORD")
+	dbHost := os.Getenv("MYSQL_HOST")
+	dbPort := os.Getenv("MYSQL_PORT")
+	dbName := os.Getenv("MYSQL_DATABASE")
+	dsn := dbUser + ":" + dbPassword + "@tcp(" + dbHost + ":" + dbPort + ")/" + dbName + "?timeout=5s"
 	retryCount := 5
 
 	for i := 0; i < retryCount; i++ {
