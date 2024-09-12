@@ -85,7 +85,7 @@ resource "aws_instance" "demo_app" {
   vpc_security_group_ids = [aws_security_group.allow_http.id]
 
   # Render user data script with SSH private key
-  user_data = templatefile("user_data.sh", {
+  user_data = templatefile("userdata.sh", {
     SSH_PRIVATE_KEY = var.ssh_private_key
   })
   tags = {
