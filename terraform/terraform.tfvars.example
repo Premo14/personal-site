@@ -1,0 +1,12 @@
+aws_region       = "us-east-1"
+ami_id           = "ami-0182f373e66f89c85" # Example AMI ID for Amazon Linux 2
+instance_type    = "t2.micro"
+key_name         = "EC2KP"
+private_key_path = "./kp/EC2KP.pem"
+vpc_cidr         = "10.0.0.0/16"
+subnet_cidr      = "10.0.1.0/24"
+ssh_private_key = <<EOF
+-----BEGIN RSA PRIVATE KEY-----
+{Apply GitHub Private SSH Key Here}
+-----END RSA PRIVATE KEY-----
+EOF
