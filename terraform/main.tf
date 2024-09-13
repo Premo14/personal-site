@@ -84,10 +84,19 @@ resource "aws_instance" "demo_app" {
   subnet_id = aws_subnet.public.id
   vpc_security_group_ids = [aws_security_group.allow_http.id]
 
-  # Render user data script with SSH private key
+
   user_data = templatefile("user_data.sh", {
-    SSH_PRIVATE_KEY = var.ssh_private_key
+    SSH_PRIVATE_KEY     = var.ssh_private_key,
+    MYSQL_ROOT_PASSWORD = var.env_variables["MYSQL_ROOT_PASSWORD"],
+    MYSQL_DATABASE      = var.env_variables["MYSQL_DATABASE"],
+    MYSQL_USER          = var.env_variables["MYSQL_USER"],
+    MYSQL_PASSWORD      = var.env_variables["MYSQL_PASSWORD"],
+    GO_ENV              = var.env_variables["GO_ENV"],
+    REACT_ENV           = var.env_variables["REACT_ENV"],
+    BACKEND_PORT        = var.env_variables["BACKEND_PORT"],
+    FRONTEND_PORT       = var.env_variables["FRONTEND_PORT"]
   })
+
   tags = {
     Name = "PersonalSiteEC2Instance"
   }

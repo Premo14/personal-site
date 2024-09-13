@@ -5,6 +5,16 @@ key_name         = "EC2KP"
 private_key_path = "./kp/EC2KP.pem"
 vpc_cidr         = "10.0.0.0/16"
 subnet_cidr      = "10.0.1.0/24"
+env_variables = {
+  MYSQL_ROOT_PASSWORD = "your_secure_password"
+  MYSQL_DATABASE      = "my_database"
+  MYSQL_USER          = "my_user"
+  MYSQL_PASSWORD      = "my_password"
+  GO_ENV              = "production"
+  REACT_ENV           = "production"
+  BACKEND_PORT        = "8080"
+  FRONTEND_PORT       = "80"
+}
 ssh_private_key = <<EOF
 -----BEGIN OPENSSH PRIVATE KEY-----
 ...

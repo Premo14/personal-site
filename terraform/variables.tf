@@ -36,3 +36,19 @@ variable "ssh_private_key" {
   type        = string
   sensitive   = true  # Mark this variable as sensitive
 }
+
+variable "env_variables" {
+  description = "Environment variables for the EC2 instance"
+  type = map(string)
+  default = {
+    MYSQL_ROOT_PASSWORD = "your_root_password"
+    MYSQL_DATABASE      = "your_database"
+    MYSQL_USER          = "your_user"
+    MYSQL_PASSWORD      = "your_password"
+    GO_ENV              = "development"
+    REACT_ENV           = "development"
+    BACKEND_PORT        = "8080"
+    FRONTEND_PORT       = "3000"
+  }
+}
+
