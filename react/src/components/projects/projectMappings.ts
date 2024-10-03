@@ -7,6 +7,7 @@ import Todo from "./todo/Todo.tsx";
 const projectMappings: { [key: string]: React.ComponentType<any> } = {
     'spin-the-ball': SpinTheBall,
     'todo': Todo,
+    'minigame': SpinTheBall,
 };
 
 export default projectMappings;

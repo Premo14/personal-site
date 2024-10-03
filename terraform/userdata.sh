@@ -38,7 +38,7 @@ mkdir data
 # Create the .env file with necessary environment variables
 cat <<EOF > /home/ec2-user/personal-site/.env
 MYSQL_ROOT_PASSWORD=rootpass
-MYSQL_DATABASE=personal-site-db
+MYSQL_DATABASE=personal-site-mariadb
 MYSQL_USER=user
 MYSQL_PASSWORD=userpass
 MYSQL_PORT=3306

@@ -2,7 +2,12 @@ import { Flex, Spinner, Stack, Text } from "@chakra-ui/react";
 import TodoItem from "./TodoItem.tsx";
 import { useQuery } from "@tanstack/react-query";
 
-const BASE_URL = "http://localhost:8080/api";
+// create each var for env
+const PROTOCOL = import.meta.env.PROTOCOL
+const BASE_URI = process.env.BASE_URI
+const BACKEND_PORT = process.env.BACKEND_PORT
+
+const BASE_URL = `${PROTOCOL}://${BASE_URI}:${BACKEND_PORT}/api`;
 
 export type Todo = {
     id: number;
@@ -39,7 +44,7 @@ const TodoList = () => {
                   bgGradient='linear(to-l, #0b85f8, #00ffff)'
                   bgClip='text'
             >
-                Today's Tasks
+              Today&amp;aposs Tasks
             </Text>
             {isLoading && (
                 <Flex justifyContent={"center"} my={4} overflow="hidden">

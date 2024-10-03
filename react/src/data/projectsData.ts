@@ -17,7 +17,7 @@ export const projects: Project[] = [
         title: "Personal Site",
         summary: "You are already here, why are you looking at this?",
         description: "Why'd you click this? You already know what it is.",
-        thumbnail: "/public/projects/thumbnails/personal-site.png",
+        thumbnail: "/projects/thumbnails/personal-site.png",
         images: [],
         detailsUrl: "/secret-path/why-are-you-here",
         githubUrl: "https://github.com/Premo14/personal-site",
@@ -32,7 +32,7 @@ export const projects: Project[] = [
         description: "Spin The Ball is a simple graphics project " +
             "using ThreeJS where you can click and drag a 3D ball " +
             "around to see how light affects it.",
-        thumbnail: "/public/projects/thumbnails/spinTheBall.png",
+        thumbnail: "/projects/thumbnails/spinTheBall.png",
         images: [],
         detailsUrl: "spin-the-ball",
         githubUrl: "https://github.com/Premo14/ThreeJsTutorial",
@@ -46,7 +46,7 @@ export const projects: Project[] = [
         description: "The todo App is an application where you can " +
             "add todos to a list and mark them as completed or " +
             "delete them.",
-        thumbnail: "/public/projects/thumbnails/todoApp.png",
+        thumbnail: "/projects/thumbnails/todoApp.png",
         images: [],
         detailsUrl: "todo-app",
         githubUrl: "https://github.com/Premo14/react-go-tutorial",
@@ -62,14 +62,14 @@ export const projects: Project[] = [
         description: "The Jokes App is a web app where jokes are displayed " +
             "and CRUD operations can be made on the jokes. A functional " +
             "login service has also been implemented.",
-        thumbnail: "/public/projects/thumbnails/jokesJokes.png",
+        thumbnail: "/projects/thumbnails/jokesJokes.png",
         images: [
-            "/public/projects/jokesApp/jokesDelete.png",
-            "/public/projects/jokesApp/jokesEdit.png",
-            "/public/projects/jokesApp/jokesDetails.png",
-            "/public/projects/jokesApp/jokesLogin.png",
-            "/public/projects/jokesApp/jokesRegister.png",
-            "/public/projects/jokesApp/jokesSearch.png"
+            "/projects/jokesApp/jokesDelete.png",
+            "/projects/jokesApp/jokesEdit.png",
+            "/projects/jokesApp/jokesDetails.png",
+            "/projects/jokesApp/jokesLogin.png",
+            "/projects/jokesApp/jokesRegister.png",
+            "/projects/jokesApp/jokesSearch.png"
         ],
         detailsUrl: "jokes-app",
         githubUrl: "https://github.com/Premo14/JokesApp/tree/main",
@@ -84,7 +84,7 @@ export const projects: Project[] = [
         description: "The Travlr App was a college project that acted as a " +
             "mock travel agency website. The project has client and server " +
             "side sites for providing and manipulating data.",
-        thumbnail: "/public/projects/thumbnails/travlr-app.png",
+        thumbnail: "/projects/thumbnails/travlr-app.png",
         images: [],
         detailsUrl: "travlr-app",
         githubUrl: "https://github.com/Premo14/cs465-fullstack/tree/project",
@@ -100,7 +100,7 @@ export const projects: Project[] = [
             "initially designed to be for the total eclipse of 2024. The app " +
             "has since been repurposed to become a tourism app for the " +
             "adirondack region of NY.",
-        thumbnail: "/public/projects/thumbnails/adk-tourism.png",
+        thumbnail: "/projects/thumbnails/adk-tourism.png",
         images: [],
         detailsUrl: "adk-tourism-app",
         githubUrl: "https://github.com/Premo14/Totality-api",

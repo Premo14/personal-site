@@ -1,5 +1,5 @@
 # Use an official Go runtime as a parent image
-FROM golang:1.22
+FROM golang:1.20
 
 # Set the working directory
 WORKDIR /app
