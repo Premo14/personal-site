@@ -4,9 +4,9 @@ import { IoMdAdd } from "react-icons/io";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
 
 // create each var for env
-const PROTOCOL = process.env.PROTOCOL
-const BASE_URI = process.env.BASE_URI
-const BACKEND_PORT = process.env.BACKEND_PORT
+const PROTOCOL = String(process.env.PROTOCOL)
+const BASE_URI = String(process.env.BASE_URI)
+const BACKEND_PORT = String(process.env.BACKEND_PORT)
 
 const BASE_URL = `${PROTOCOL}://${BASE_URI}:${BACKEND_PORT}/api`;
 
