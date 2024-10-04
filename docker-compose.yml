@@ -24,7 +24,7 @@ services:
       dockerfile: Dockerfile
     working_dir: /app
     ports:
-      - "${BACKEND_PORT}:${BACKEND_PORT}"
+      - "${REACT_APP_BACKEND_PORT}:${REACT_APP_BACKEND_PORT}"
     environment:
       MYSQL_HOST: mysql
       MYSQL_PORT: $MYSQL_PORT
@@ -32,7 +32,7 @@ services:
       MYSQL_PASSWORD: $MYSQL_PASSWORD
       MYSQL_DATABASE: $MYSQL_DATABASE
       GO_ENV: $GO_ENV
-      BACKEND_PORT: $BACKEND_PORT
+      BACKEND_PORT: $REACT_APP_BACKEND_PORT
     depends_on:
       - mysql
     networks:

@@ -15,7 +15,7 @@ COPY . .
 RUN go build -o main .
 
 # Expose the port the app runs on
-EXPOSE ${BACKEND_PORT:-8080}
+EXPOSE ${REACT_APP_BACKEND_PORT:-8080}
 
 # Command to run the executable
 #CMD ["sh", "-c", "./main && tail -f /dev/null"] # for debugging
