@@ -2,10 +2,13 @@ import { Flex, Spinner, Stack, Text } from "@chakra-ui/react";
 import TodoItem from "./TodoItem.tsx";
 import { useQuery } from "@tanstack/react-query";
 
-// create each var for env
-const PROTOCOL = String(process.env.PROTOCOL)
-const BASE_URI = String(process.env.BASE_URI)
-const BACKEND_PORT = String(process.env.BACKEND_PORT)
+const PROTOCOL = process.env.REACT_APP_PROTOCOL;
+const BASE_URI = process.env.REACT_APP_BASE_URI;
+const BACKEND_PORT = process.env.REACT_APP_BACKEND_PORT;
+
+if (!PROTOCOL || !BASE_URI || !BACKEND_PORT) {
+  throw new Error("Missing required environment variables");
+}
 
 const BASE_URL = `${PROTOCOL}://${BASE_URI}:${BACKEND_PORT}/api`;
 
