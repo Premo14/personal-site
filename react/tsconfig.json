@@ -7,5 +7,14 @@
     {
       "path": "./tsconfig.node.json"
     }
+  ],
+  "compilerOptions": {
+    // other options...
+    "types": ["vite/client"],
+    "strict": true, // optional, enables strict type checking
+  },
+  "include": [
+    "src",
+    "vite-env.d.ts" // Include your declaration file if necessary
   ]
 }

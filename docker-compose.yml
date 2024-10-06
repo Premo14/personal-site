@@ -24,7 +24,7 @@ services:
       dockerfile: Dockerfile
     working_dir: /app
     ports:
-      - "${REACT_APP_BACKEND_PORT}:${REACT_APP_BACKEND_PORT}"
+      - "${VITE_APP_BACKEND_PORT}:${VITE_APP_BACKEND_PORT}"
     environment:
       MYSQL_HOST: mysql
       MYSQL_PORT: $MYSQL_PORT
@@ -32,7 +32,7 @@ services:
       MYSQL_PASSWORD: $MYSQL_PASSWORD
       MYSQL_DATABASE: $MYSQL_DATABASE
       GO_ENV: $GO_ENV
-      BACKEND_PORT: $REACT_APP_BACKEND_PORT
+      BACKEND_PORT: $VITE_APP_BACKEND_PORT
     depends_on:
       - mysql
     networks:
@@ -49,10 +49,13 @@ services:
       - ./react:/app
       - /app/node_modules
     ports:
-      - "${FRONTEND_PORT}:${FRONTEND_PORT}"
+      - "${VITE_APP_FRONTEND_PORT}:${VITE_APP_FRONTEND_PORT}"
     environment:
       REACT_ENV: $REACT_ENV
-      FRONTEND_PORT: $FRONTEND_PORT
+      FRONTEND_PORT: $VITE_APP_FRONTEND_PORT
+      VITE_APP_BACKEND_PORT: $VITE_APP_BACKEND_PORT
+      VITE_APP_PROTOCOL: $VITE_APP_PROTOCOL
+      VITE_APP_BASE_URI: $VITE_APP_BASE_URI
     command: npm run dev
     networks:
       - app-network

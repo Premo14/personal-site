@@ -14,11 +14,11 @@ import (
 var DB *gorm.DB
 
 func InitDatabase() error {
-	dbUser := os.Getenv("DB_USER")
-	dbPassword := os.Getenv("DB_PASSWORD")
-	dbHost := os.Getenv("DB_HOST")
-	dbPort := os.Getenv("DB_PORT")
-	dbName := os.Getenv("DB_DATABASE")
+	dbUser := os.Getenv("MYSQL_USER")
+	dbPassword := os.Getenv("MYSQL_PASSWORD")
+	dbHost := os.Getenv("MYSQL_HOST")
+	dbPort := os.Getenv("MYSQL_PORT")
+	dbName := os.Getenv("MYSQL_DATABASE")
 
 	// DSN without the database name to create the database if it doesn't exist
 	dsnWithoutDB := dbUser + ":" + dbPassword + "@tcp(" + dbHost + ":" + dbPort + ")/?timeout=5s"

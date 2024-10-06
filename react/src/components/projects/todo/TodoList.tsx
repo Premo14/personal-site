@@ -2,13 +2,9 @@ import { Flex, Spinner, Stack, Text } from "@chakra-ui/react";
 import TodoItem from "./TodoItem.tsx";
 import { useQuery } from "@tanstack/react-query";
 
-const PROTOCOL = process.env.REACT_APP_PROTOCOL;
-const BASE_URI = process.env.REACT_APP_BASE_URI;
-const BACKEND_PORT = process.env.REACT_APP_BACKEND_PORT;
-
-if (!PROTOCOL || !BASE_URI || !BACKEND_PORT) {
-  throw new Error("Missing required environment variables");
-}
+const PROTOCOL = String(process.env.VITE_APP_PROTOCOL);
+const BASE_URI = String(process.env.VITE_APP_BASE_URI);
+const BACKEND_PORT = String(process.env.VITE_APP_BACKEND_PORT);
 
 const BASE_URL = `${PROTOCOL}://${BASE_URI}:${BACKEND_PORT}/api`;
 
@@ -47,7 +43,7 @@ const TodoList = () => {
                   bgGradient='linear(to-l, #0b85f8, #00ffff)'
                   bgClip='text'
             >
-              Today&amp;aposs Tasks
+              Today's Tasks
             </Text>
             {isLoading && (
                 <Flex justifyContent={"center"} my={4} overflow="hidden">
