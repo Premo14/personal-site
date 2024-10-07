@@ -56,12 +56,7 @@ func main() {
 		AllowedHeaders:   []string{"Content-Type", "Authorization"},
 	})
 
-	port := os.Getenv("BACKEND_PORT")
-	if port == "" {
-		port = "8080"
-	}
-
 	// Start the server with CORS handler
-	log.Printf("Starting server on port %s", port)
-	log.Fatal(http.ListenAndServe("0.0.0.0:"+port, corsHandler.Handler(router)))
+	log.Printf("Starting server on port %s", backendPort)
+	log.Fatal(http.ListenAndServe("0.0.0.0:"+backendPort, corsHandler.Handler(router)))
 }
