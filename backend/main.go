@@ -45,12 +45,12 @@ func main() {
 
 	// Construct the localhost URL with the correct port
 	localhostURL := fmt.Sprintf("http://localhost:%s", frontendPort)
-	productionURL := fmt.Sprintf("http://98.83.131.132:%s", backendPort)
+	productionURL := fmt.Sprint("http://98.83.131.132")
 	domain := fmt.Sprint("https://premsanity.com")
 
 	// Setup CORS with the dynamically generated localhost URL
 	corsHandler := cors.New(cors.Options{
-		AllowedOrigins:   []string{localhostURL, productionURL, domain, "http://backend:8080"}, // Add the dynamically generated localhost URL
+		AllowedOrigins:   []string{localhostURL, productionURL, domain}, // Add the dynamically generated localhost URL
 		AllowCredentials: true,
 		AllowedMethods:   []string{"GET", "POST", "PATCH", "DELETE", "OPTIONS"},
 		AllowedHeaders:   []string{"Content-Type", "Authorization"},
