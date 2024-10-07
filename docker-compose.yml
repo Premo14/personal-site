@@ -33,6 +33,7 @@ services:
       MYSQL_DATABASE: $MYSQL_DATABASE
       GO_ENV: $GO_ENV
       BACKEND_PORT: $VITE_APP_BACKEND_PORT
+      VITE_APP_FRONTEND_PORT: $VITE_APP_FRONTEND_PORT
     depends_on:
       mysql:
         condition: service_healthy
