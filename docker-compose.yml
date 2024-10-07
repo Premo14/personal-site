@@ -34,7 +34,8 @@ services:
       GO_ENV: $GO_ENV
       BACKEND_PORT: $VITE_APP_BACKEND_PORT
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     networks:
       - app-network
     restart: always
