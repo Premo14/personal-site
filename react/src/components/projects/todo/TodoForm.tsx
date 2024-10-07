@@ -2,12 +2,7 @@ import {Button, Container, Flex, Input, Spinner, Text} from "@chakra-ui/react";
 import React, { useState } from "react";
 import { IoMdAdd } from "react-icons/io";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
-
-const PROTOCOL = String(process.env.VITE_APP_PROTOCOL);
-const BASE_URI = String(process.env.VITE_APP_BASE_URI);
-const BACKEND_PORT = String(process.env.VITE_APP_BACKEND_PORT);
-
-const BASE_URL = `${PROTOCOL}://${BASE_URI}:${BACKEND_PORT}/api`;
+import {BASE_URL} from "../../../BASE_URL.tsx";
 
 const TodoForm = () => {
     const [newTodo, setNewTodo] = useState("");

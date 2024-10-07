@@ -1,12 +1,7 @@
 import { Flex, Spinner, Stack, Text } from "@chakra-ui/react";
 import TodoItem from "./TodoItem.tsx";
 import { useQuery } from "@tanstack/react-query";
-
-const PROTOCOL = String(process.env.VITE_APP_PROTOCOL);
-const BASE_URI = String(process.env.VITE_APP_BASE_URI);
-const BACKEND_PORT = String(process.env.VITE_APP_BACKEND_PORT);
-
-const BASE_URL = `${PROTOCOL}://${BASE_URI}:${BACKEND_PORT}/api`;
+import {BASE_URL} from "../../../BASE_URL.tsx";
 
 export type Todo = {
     id: number;
