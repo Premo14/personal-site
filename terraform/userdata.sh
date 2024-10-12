@@ -50,32 +50,31 @@ docker pull mariadb:10
 mkdir -p /home/ubuntu/data
 
 # Create the .env file with production environment variables
-cat <<EOT > /home/ubuntu/.env
-MYSQL_ROOT_PASSWORD=prod-root-pass
-MYSQL_DATABASE=prod-database-name
-MYSQL_USER=prod-user
-MYSQL_PASSWORD=prod-user-pass
+cat <<EOT > /home/ubuntu/.env98fcd
+MYSQL_ROOT_PASSWORD=rootpass
+MYSQL_DATABASE=personal-site-mariadb
+MYSQL_USER=user
+MYSQL_PASSWORD=userpass
 MYSQL_PORT=3306
-VITE_APP_FRONTEND_PORT=80
-VITE_APP_PROTOCOL=https
-VITE_APP_BASE_URI=your-domain.com
-VITE_APP_BACKEND_PORT=443
 GO_ENV=production
+VITE_APP_BACKEND_PORT=443
 REACT_ENV=production
+VITE_APP_FRONTEND_PORT=80
+VITE_APP_PROTOCOL=http
+VITE_APP_BASE_URI=localhost
 EOT
 
 # Create the Docker Compose file
 cat <<EOT > /home/ubuntu/docker-compose.yml
-version: '3'
 services:
   mysql:
     image: mariadb:10
     container_name: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: \${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: \${MYSQL_DATABASE}
-      MYSQL_USER: \${MYSQL_USER}
-      MYSQL_PASSWORD: \${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - mysql-data:/var/lib/mysql
     networks:
@@ -91,16 +90,16 @@ services:
     container_name: backend
     working_dir: /app
     ports:
-      - "\${VITE_APP_BACKEND_PORT}:\${VITE_APP_BACKEND_PORT}"
+      - "${VITE_APP_BACKEND_PORT}:${VITE_APP_BACKEND_PORT}"
     environment:
       MYSQL_HOST: mysql
-      MYSQL_PORT: \${MYSQL_PORT}
-      MYSQL_USER: \${MYSQL_USER}
-      MYSQL_PASSWORD: \${MYSQL_PASSWORD}
-      MYSQL_DATABASE: \${MYSQL_DATABASE}
-      GO_ENV: \${GO_ENV}
-      VITE_APP_BACKEND_PORT: \${VITE_APP_BACKEND_PORT}
-      VITE_APP_FRONTEND_PORT: \${VITE_APP_FRONTEND_PORT}
+      MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      GO_ENV: ${GO_ENV}
+      VITE_APP_BACKEND_PORT: ${VITE_APP_BACKEND_PORT}
+      VITE_APP_FRONTEND_PORT: ${VITE_APP_FRONTEND_PORT}
     depends_on:
       mysql:
         condition: service_healthy
@@ -113,13 +112,13 @@ services:
     container_name: frontend
     working_dir: /app
     ports:
-      - "\${VITE_APP_FRONTEND_PORT}:\${VITE_APP_FRONTEND_PORT}"
+      - "${VITE_APP_FRONTEND_PORT}:${VITE_APP_FRONTEND_PORT}"
     environment:
-      REACT_ENV: \${REACT_ENV}
-      FRONTEND_PORT: \${VITE_APP_FRONTEND_PORT}
-      VITE_APP_BACKEND_PORT: \${VITE_APP_BACKEND_PORT}
-      VITE_APP_PROTOCOL: \${VITE_APP_PROTOCOL}
-      VITE_APP_BASE_URI: \${VITE_APP_BASE_URI}
+      REACT_ENV: ${REACT_ENV}
+      FRONTEND_PORT: ${VITE_APP_FRONTEND_PORT}
+      VITE_APP_BACKEND_PORT: ${VITE_APP_BACKEND_PORT}
+      VITE_APP_PROTOCOL: ${VITE_APP_PROTOCOL}
+      VITE_APP_BASE_URI: ${VITE_APP_BASE_URI}
     networks:
       - app-network
 

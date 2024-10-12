@@ -85,12 +85,11 @@ resource "aws_instance" "PersonalSiteEC2" {
 # Elastic IP
 resource "aws_eip" "personal_site_eip" {
   instance = aws_instance.PersonalSiteEC2.id
-  domain   = "vpc"  # Use domain instead of vpc = true
+  domain   = "vpc"
   tags = {
     Name = "PersonalSiteEIP"
   }
 }
-
 
 # Associate Elastic IP with the EC2 Instance
 resource "aws_eip_association" "eip_assoc" {
