@@ -24,8 +24,9 @@
 
 ## Production Tools
 - [AWS](https://aws.amazon.com/)
-  - EC2
-  - ECR
+  - [Terraform](https://www.terraform.io/)
+  - [EC2](https://aws.amazon.com/ec2/)
+  - [ECR](https://aws.amazon.com/ecr/)
 
 ## Running the Web App Locally with Docker
 
