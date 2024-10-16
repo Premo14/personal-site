@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Box, Button, Text } from '@chakra-ui/react';
 
-const CONSTANT_FALL_VELOCITY = 3;
-const FLAP_STRENGTH = -4;
+const CONSTANT_FALL_VELOCITY = 2.5;
+const FLAP_STRENGTH = -2.5;
 const BIRD_SIZE = 20;
 const PIPE_WIDTH = 60;
 const PIPE_GAP = 150;
