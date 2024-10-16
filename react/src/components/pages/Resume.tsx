@@ -32,7 +32,6 @@ const Resume: React.FC = () => {
 
     const [selectedCourse, setSelectedCourse] = useState<{ title: string, description: string }>({ title: '', description: '' });
 
-    // Define the courses with their descriptions
     const courses: { [course: string]: string } = {
         'Full Stack Development I & II': 'Full Stack Development I:<br/>Students will design and develop a full stack application through the utilization of programming language frameworks. In creating a full stack application, students will also be responsible for developing a database as well as the code that interfaces their application to the database. This course is the first course in a two-course sequence.<br/><br/>Full Stack Development II:<br/>In this course, students will develop a full stack application that runs in the cloud. Through the application of cloud-based development principles and best practices, students will take their software stack from Full Stack Development I and utilize frameworks to build the cloud architecture upon which the software stack application will run. In addition, students will also demonstrate their career-readiness by articulating highly technical content to various audiences and in various formats. This course is the second course in a two-course sequence.',
         'Software Reverse Engineering': 'Students will learn the basics of reverse engineering specific to software systems. Learn how reverse engineering is used to recreate missing documentation to support legacy software code. Examine how reverse engineering is used to make new software products, enhance the functionality and efficiency of software components, and recreate the code for applications. Apply fundamental reverse engineering technologies and practices for maintainability and security-related use cases.',
@@ -54,7 +53,6 @@ const Resume: React.FC = () => {
         'Intro to Computer Science': 'This course first introduces with the elementary concepts of computer science such as CPU, memory, I/O devices and binary number system. It then focuses on developing basic programming skills. The topics include input and output data, data types, control structures, functions/methods, arrays, procedural and object-oriented programming concepts, and program debugging and compilation.',
     };
 
-    // Function to handle course click and open the description modal
     const handleCourseClick = (course: string) => {
         setSelectedCourse({ title: course, description: courses[course] });
         onDescriptionModalOpen();

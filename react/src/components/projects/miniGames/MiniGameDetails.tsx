@@ -19,9 +19,9 @@ const MiniGameDetails = () => {
       width="100vw"
       display="flex"
       flexDirection="column"
-      minHeight="100vh" // Ensure the container takes up full height
-      overflowY="auto"  // Allow scrolling if content overflows
-      background="black"
+      minHeight="100vh"
+      overflowY="auto"
+      backgroundColor="black"
     >
       <Button m={4} w={200} onClick={() => navigate("/projects/mini-games")}>Back to Arcade</Button>
       <Text fontSize="2xl" fontWeight="bold" maxW="800px">{miniGame.title}</Text>
@@ -33,9 +33,9 @@ const MiniGameDetails = () => {
       {/* Render the mini-game component */}
       {ProjectComponent && (
         <Box
-          flex="1" // Allow the game to grow and take available space
+          flex="1"
           mt={4}
-          overflowY="auto" // Scroll if game content is too large
+          overflowY="auto"
         >
           <ProjectComponent />
         </Box>

@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Box, Text, Button } from '@chakra-ui/react';
 
-// Constants
 const BOARD_SIZE = 20;  // 20x20 grid
 const INITIAL_SNAKE = [{ x: 10, y: 10 }];
 const INITIAL_DIRECTION = { x: 0, y: 0 };
 
-// Utility function to generate random food position
 const generateFoodPosition = () => {
   return {
     x: Math.floor(Math.random() * BOARD_SIZE),
@@ -51,11 +49,11 @@ const SnakeGame: React.FC = () => {
 
   // Move the snake at regular intervals
   useEffect(() => {
-    if (isGameOver) return;  // Stop the game if it's over
+    if (isGameOver) return;
 
     gameInterval.current = setInterval(() => {
       moveSnake();
-    }, 100);  // Speed of the snake (200ms interval)
+    }, 100); // Speed of snake
 
     return () => clearInterval(gameInterval.current);
   }, [snake, direction]);

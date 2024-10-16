@@ -14,7 +14,6 @@ type Todo struct {
 	Body      string `json:"body" gorm:"type:text"`
 }
 
-// GetTodos CRUD handlers
 func GetTodos(w http.ResponseWriter, r *http.Request) {
 	var todos []Todo
 	if err := database.GetDB().Find(&todos).Error; err != nil {

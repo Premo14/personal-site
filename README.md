@@ -24,6 +24,8 @@
 
 ## Production Tools
 - [AWS](https://aws.amazon.com/)
+  - EC2
+  - ECR
 
 ## Running the Web App Locally with Docker
 

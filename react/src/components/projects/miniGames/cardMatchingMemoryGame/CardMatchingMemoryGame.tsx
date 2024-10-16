@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Box, Button, SimpleGrid, Text, Select, Flex } from '@chakra-ui/react';
 
-// Card data - sample emoji pairs for simplicity
 const cardData = [
   "🍎", "🍌", "🍇", "🍉", "🍓", "🍒", "🍍", "🥥", "🍑", "🍆", "🥑", "🌽",
   "🥕", "🍋", "🥭", "🍑", "🍐", "🍒", "🍏", "🍉", "🍊", "🍈", "🍇", "🥥",
@@ -14,7 +13,7 @@ const shuffleArray = (array: string[]) => {
 
 // Memory Card Game component
 const MemoryCardGame: React.FC = () => {
-  const [difficulty, setDifficulty] = useState<number>(4); // Default difficulty (Easy)
+  const [difficulty, setDifficulty] = useState<number>(4);
   const [cards, setCards] = useState<string[]>([]);
   const [flippedIndices, setFlippedIndices] = useState<number[]>([]);
   const [matchedCards, setMatchedCards] = useState<number[]>([]);

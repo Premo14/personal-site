@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Box, Button, Text } from '@chakra-ui/react';
 
-const CONSTANT_FALL_VELOCITY = 3;  // Constant falling speed for the bird
-const FLAP_STRENGTH = -4;  // How much the bird "flaps" up
+const CONSTANT_FALL_VELOCITY = 3;
+const FLAP_STRENGTH = -4;
 const BIRD_SIZE = 20;
 const PIPE_WIDTH = 60;
 const PIPE_GAP = 150;
@@ -12,10 +12,10 @@ const FLAP_COOLDOWN = 150;  // Milliseconds of delay after flapping before falli
 
 const FlappyBirdGame: React.FC = () => {
   const [birdPosition, setBirdPosition] = useState(GAME_HEIGHT / 2);  // Bird starts in the middle
-  const [birdVelocity, setBirdVelocity] = useState(0);  // Velocity of the bird
+  const [birdVelocity, setBirdVelocity] = useState(0);
   const [pipes, setPipes] = useState([{ x: GAME_WIDTH, y: Math.random() * (GAME_HEIGHT - PIPE_GAP) }]);
   const [isGameOver, setIsGameOver] = useState(false);
-  const [isGameStarted, setIsGameStarted] = useState(false);  // New state to track game start
+  const [isGameStarted, setIsGameStarted] = useState(false);
   const [score, setScore] = useState(0);
   const [flapCooldown, setFlapCooldown] = useState(false);  // Track if bird is in flap cooldown
   const gameLoop = useRef<any>(null);
@@ -68,12 +68,11 @@ const FlappyBirdGame: React.FC = () => {
       if (newPipes[0].x + PIPE_WIDTH < 0) {
         newPipes.shift();  // Remove old pipe
         newPipes.push({ x: GAME_WIDTH, y: Math.random() * (GAME_HEIGHT - PIPE_GAP) });  // Add new pipe
-        setScore(score + 1);  // Increment score when passing a pipe
+        setScore(score + 1);
       }
       return newPipes;
     });
 
-    // Check for collisions
     checkCollisions();
 
     // Continue game loop
@@ -190,7 +189,7 @@ const FlappyBirdGame: React.FC = () => {
           height="100%"
           top="0"
           left="0"
-          zIndex="1"  // Make sure this is behind the game-over message
+          zIndex="1"
           onClick={handleFlap}
         />
       )}

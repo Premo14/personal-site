@@ -25,9 +25,9 @@ const theme = extendTheme({
         },
     },
     zIndices: {
-        videoBackground: -10, // Custom z-index for the video background
-        content: 1,           // Content z-index
-        modal: 1000,          // Example of a modal z-index if needed
+        videoBackground: -10,
+        content: 1,
+        modal: 1000,
     },
 });
 
