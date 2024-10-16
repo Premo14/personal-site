@@ -15,7 +15,7 @@
 - [TanStack](https://tanstack.com/)
 
 ## Database
-- [MySQL](https://www.mysql.com/)
+- [MariaDB](https://www.mysql.com/](https://mariadb.org/)
 
 ## Development Tools
 - [GoLand](https://www.jetbrains.com/goland/)
