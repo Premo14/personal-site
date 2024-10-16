@@ -1,6 +1,4 @@
 #!/bin/bash
-set -ex
-
 # Update package lists and ensure non-interactive installation
 sudo apt-get update -y
 sudo apt-get upgrade -y
@@ -50,7 +48,7 @@ docker pull mariadb:10
 mkdir -p /home/ubuntu/data
 
 # Create the .env file with production environment variables
-cat <<EOT > /home/ubuntu/.env98fcd
+cat <<EOT > /home/ubuntu/.env
 MYSQL_ROOT_PASSWORD=rootpass
 MYSQL_DATABASE=personal-site-mariadb
 MYSQL_USER=user
@@ -60,8 +58,8 @@ GO_ENV=production
 VITE_APP_BACKEND_PORT=443
 REACT_ENV=production
 VITE_APP_FRONTEND_PORT=80
-VITE_APP_PROTOCOL=http
-VITE_APP_BASE_URI=localhost
+VITE_APP_PROTOCOL=https
+VITE_APP_BASE_URI=premsanity.com
 EOT
 
 # Create the Docker Compose file
@@ -135,4 +133,6 @@ networks:
     driver: bridge
 EOT
 
-sudo docker-compose up -d
+cd /home/ubuntu
+
+docker compose up -d

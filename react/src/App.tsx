@@ -5,9 +5,9 @@ import Home from "./components/pages/Home";
 import Resume from "./components/pages/Resume";
 import Projects from "./components/pages/Projects";
 import Footer from "./components/shared/Footer";
-import ProjectLargeCard from "./components/projects/ProjectLargeCard.tsx";
 import ProjectDetails from "./components/projects/ProjectDetails.tsx";
-import SpinTheBall from "./components/projects/spinTheBall/SpinTheBall.tsx";
+import MiniGames from './components/projects/miniGames/MiniGames.tsx';
+import MiniGameDetails from './components/projects/miniGames/MiniGameDetails.tsx';
 
 function App() {
     return (
@@ -19,8 +19,9 @@ function App() {
                         <Route path="/" element={<Home />} />
                         <Route path="/resume" element={<Resume />} />
                         <Route path="/projects" element={<Projects />} />
-                        <Route path="/project/:id" element={<ProjectLargeCard />} />
                         <Route path="/projects/:detailsUrl" element={<ProjectDetails />} />
+                        <Route path="/projects/mini-games" element={<MiniGames />} />
+                        <Route path="/projects/mini-games/:detailsUrl" element={<MiniGameDetails />} />
                     </Routes>
                 </Stack>
                 <Footer />

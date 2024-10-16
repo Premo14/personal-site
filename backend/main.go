@@ -36,7 +36,7 @@ func main() {
 
 	frontendPort := os.Getenv("VITE_APP_FRONTEND_PORT")
 	if frontendPort == "" {
-		frontendPort = "80" // Default to 3000 if the variable is not set
+		frontendPort = "3000" // Default to 3000 if the variable is not set
 	}
 	backendPort := os.Getenv("VITE_APP_BACKEND_PORT")
 	if backendPort == "" {

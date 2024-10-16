@@ -12,6 +12,7 @@ const theme = extendTheme({
         global: (props: any) => ({
             body: {
                 backgroundColor: mode("gray.500", "")(props),
+                zIndex: 0
             },
 
         }),
@@ -22,6 +23,11 @@ const theme = extendTheme({
                 color: mode("blue.700", "teal.500")(props),
             }),
         },
+    },
+    zIndices: {
+        videoBackground: -10, // Custom z-index for the video background
+        content: 1,           // Content z-index
+        modal: 1000,          // Example of a modal z-index if needed
     },
 });
 

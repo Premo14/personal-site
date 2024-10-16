@@ -1,6 +1,6 @@
 import { Box, Image, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { Project } from "../../data/projectsData";
+import { Project } from "../../data/data.ts";
 import React from "react";
 
 interface ProjectSmallCardProps {
@@ -17,7 +17,7 @@ const ProjectSmallCard: React.FC<ProjectSmallCardProps> = ({ project }) => {
             borderRadius="lg"
             boxShadow="lg"
             cursor="pointer"
-            onClick={() => navigate(`/project/${project.id}`)}
+            onClick={() => navigate(`/projects/${project.detailsUrl}`)}
             p={4}
             maxW="300px"
             minW="200px"
@@ -26,7 +26,7 @@ const ProjectSmallCard: React.FC<ProjectSmallCardProps> = ({ project }) => {
             flexDirection="column"
             alignItems="center"
             justifyContent="space-between"
-            overflow="hidden"
+            overflow="visible"
             transition="transform 0.2s, box-shadow 0.2s"
             _hover={{
                 transform: "scale(1.05)",

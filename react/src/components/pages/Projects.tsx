@@ -1,6 +1,6 @@
 import { Text, SimpleGrid, Box, Flex } from "@chakra-ui/react";
 import ProjectSmallCard from "../projects/ProjectSmallCard";
-import { projects } from "../../data/projectsData";
+import { projects } from "../../data/data.ts";
 import React from "react";
 
 const Projects: React.FC = () => {

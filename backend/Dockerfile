@@ -1,7 +1,7 @@
-# Use an official Go runtime as a parent image
-FROM golang:1.20
+# Stage 1: Build the Go application
+FROM golang:1.20-alpine AS builder
 
-# Set the working directory
+# Set the working directory inside the builder container
 WORKDIR /app
 
 # Copy the Go module files and download the dependencies
@@ -11,12 +11,20 @@ RUN go mod download
 # Copy the source code
 COPY . .
 
-# Build the Go application
-RUN go build -o main .
+# Build the Go application statically for a smaller final image
+RUN CGO_ENABLED=0 GOOS=linux go build -o main .
+
+# Stage 2: Create a minimal image with the built binary
+FROM alpine:3.18
+
+# Set the working directory inside the final container
+WORKDIR /app
+
+# Copy the binary from the builder stage
+COPY --from=builder /app/main .
 
 # Expose the port the app runs on
 EXPOSE ${VITE_APP_BACKEND_PORT:-8080}
 
 # Command to run the executable
-#CMD ["sh", "-c", "./main && tail -f /dev/null"] # for debugging
 CMD ["./main"]
