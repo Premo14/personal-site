@@ -44,7 +44,7 @@ docker pull 739275461129.dkr.ecr.us-east-1.amazonaws.com/personal-site:backend-l
 docker pull 739275461129.dkr.ecr.us-east-1.amazonaws.com/personal-site:frontend-latest
 docker pull mariadb:10
 
-# Create the 'data' directory
+# Create the 'frontendData' directory
 mkdir -p /home/ubuntu/data
 
 # Create the .env file with production environment variables

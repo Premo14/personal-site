@@ -8,7 +8,7 @@ services:
       MYSQL_USER: $MYSQL_USER
       MYSQL_PASSWORD: $MYSQL_PASSWORD
     volumes:
-      - mysql-data:/var/lib/mysql
+      - mysql-frontendData:/var/lib/mysql
     networks:
       - app-network
     healthcheck:
@@ -67,7 +67,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: ./data
+      device: ./frontendData
       o: bind
 
 networks:

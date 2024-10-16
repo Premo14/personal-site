@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Text, Box, Flex, SimpleGrid, Button } from '@chakra-ui/react';
-import { miniGames } from '../../../data/data.ts';
+import { miniGames } from '../../../frontendData/data.ts';
 import React from 'react';
 import MiniGameSmallCard from './MiniGameSmallCard.tsx';
 

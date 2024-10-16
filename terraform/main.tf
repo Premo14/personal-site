@@ -62,7 +62,7 @@ resource "aws_instance" "PersonalSiteEC2" {
 
   security_groups = [aws_security_group.allow_http_https_ssh.name]
 
-  # Render user data script with SSH private key
+  # Render user frontendData script with SSH private key
   user_data = templatefile("userdata.sh", {
     MYSQL_ROOT_PASSWORD      = var.mysql_root_password,
     MYSQL_DATABASE           = var.mysql_database,

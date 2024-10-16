@@ -1,7 +1,7 @@
 import { Box, Image, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import React from "react";
-import { MiniGame } from '../../../data/data.ts';
+import { MiniGame } from '../../../frontendData/data.ts';
 
 interface MiniGameSmallCardProps {
   miniGame: MiniGame;

@@ -13,7 +13,7 @@ import {
   Button,
 } from '@chakra-ui/react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { projects } from "../../data/data.ts";
+import { projects } from "../../frontendData/data.ts";
 import React, { useState } from "react";
 import projectMappings from "./projectMappings.ts";
 

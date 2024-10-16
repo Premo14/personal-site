@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from 'react-router-dom';
-import { miniGames } from '../../../data/data.ts';
+import { miniGames } from '../../../frontendData/data.ts';
 import miniGameMappings from './miniGameMappings.ts';
 import { Box, Text, Link, Button } from '@chakra-ui/react';
 

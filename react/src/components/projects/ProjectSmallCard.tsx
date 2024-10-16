@@ -1,6 +1,6 @@
 import { Box, Image, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { Project } from "../../data/data.ts";
+import { Project } from "../../frontendData/data.ts";
 import React from "react";
 
 interface ProjectSmallCardProps {
