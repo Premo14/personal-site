@@ -1,0 +1,11 @@
+version: 0.0
+os: linux
+files:
+  - source: /terraform/userdata.sh
+    destination: /home/ubuntu/userdata.sh
+
+hooks:
+  AfterInstall:
+    - location: /home/ubuntu/userdata.sh
+      timeout: 300
+      runas: root
