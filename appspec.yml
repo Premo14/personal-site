@@ -1,15 +1,11 @@
 version: 0.0
 os: linux
+files:
+  - source: /scripts/pull-docker-images.sh
+    destination: /home/ubuntu/
 
 hooks:
-  ApplicationStop:
-    # Stop running containers before starting new ones
-    - location: scripts/stop-containers.sh
-      timeout: 300
-      runas: root
-
-  ApplicationStart:
-    # Start or restart your Docker containers with the new images
-    - location: scripts/start-containers.sh
+  AfterInstall:
+    - location: /home/ubuntu/pull-docker-images.sh
       timeout: 300
       runas: root

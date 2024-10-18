@@ -57,6 +57,8 @@ docker pull mariadb:10
 # Create the 'frontendData' directory
 mkdir -p /home/ubuntu/data
 
+ chmod +x scripts/*.sh
+
 # Create the .env file with production environment variables
 cat <<EOT > /home/ubuntu/.env
 MYSQL_ROOT_PASSWORD=rootpass
