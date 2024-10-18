@@ -1,11 +1,15 @@
 version: 0.0
 os: linux
-files:
-  - source: /terraform/userdata.sh
-    destination: /home/ubuntu/userdata.sh
 
 hooks:
-  AfterInstall:
-    - location: /home/ubuntu/userdata.sh
+  ApplicationStop:
+    # Stop running containers before starting new ones
+    - location: stop-containers.sh
+      timeout: 300
+      runas: root
+
+  ApplicationStart:
+    # Start or restart your Docker containers with the new images
+    - location: start-containers.sh
       timeout: 300
       runas: root

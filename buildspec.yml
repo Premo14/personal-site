@@ -1,0 +1,28 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Docker Hub...
+      - echo $DOCKER_HUB_PASSWORD | docker login --username $DOCKER_HUB_USERNAME --password-stdin
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 739275461129.dkr.ecr.us-east-1.amazonaws.com
+
+  build:
+    commands:
+      - echo Build started on `date`
+      - docker build -t 739275461129.dkr.ecr.us-east-1.amazonaws.com/personal-site:backend-latest ./backend
+      - docker build -t 739275461129.dkr.ecr.us-east-1.amazonaws.com/personal-site:frontend-latest ./react
+
+  post_build:
+    commands:
+      - docker tag 739275461129.dkr.ecr.us-east-1.amazonaws.com/personal-site:backend-latest 739275461129.dkr.ecr.us-east-1.amazonaws.com/personal-site:backend-latest
+      - docker tag 739275461129.dkr.ecr.us-east-1.amazonaws.com/personal-site:frontend-latest 739275461129.dkr.ecr.us-east-1.amazonaws.com/personal-site:frontend-latest
+
+      - echo Build completed on `date`
+      - docker push 739275461129.dkr.ecr.us-east-1.amazonaws.com/personal-site:backend-latest
+      - docker push 739275461129.dkr.ecr.us-east-1.amazonaws.com/personal-site:frontend-latest
+
+artifacts:
+  files:
+    - dummy.txt
