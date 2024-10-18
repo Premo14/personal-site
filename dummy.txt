@@ -1,0 +1,1 @@
+This file is for mandatory artifact in CodePipeline process
