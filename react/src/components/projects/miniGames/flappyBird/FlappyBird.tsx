@@ -2,13 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Box, Button, Text } from '@chakra-ui/react';
 
 const CONSTANT_FALL_VELOCITY = 2.5;
-const FLAP_STRENGTH = -2.5;
-const BIRD_SIZE = 20;
+const FLAP_STRENGTH = -5;
+const BIRD_SIZE = 30;  // Size for rendering the bird image
 const PIPE_WIDTH = 60;
-const PIPE_GAP = 150;
+const PIPE_GAP = 125;
 const GAME_WIDTH = 500;
 const GAME_HEIGHT = 400;
-const FLAP_COOLDOWN = 150;  // Milliseconds of delay after flapping before falling
+const FLAP_COOLDOWN = 0;  // Milliseconds of delay after flapping before falling
 
 const FlappyBirdGame: React.FC = () => {
   const [birdPosition, setBirdPosition] = useState(GAME_HEIGHT / 2);  // Bird starts in the middle
@@ -90,14 +90,14 @@ const FlappyBirdGame: React.FC = () => {
     // Check for collisions with pipes
     pipes.forEach(pipe => {
       const birdLeft = 50;  // Bird's constant X position
-      const birdRight = birdLeft + BIRD_SIZE;
-      const birdTop = birdPosition;
-      const birdBottom = birdPosition + BIRD_SIZE;
+      const birdRight = birdLeft + BIRD_SIZE; // Use bird size for right
+      const birdTop = birdPosition;  // Top of the bird
+      const birdBottom = birdPosition + BIRD_SIZE; // Bottom of the bird
 
       const pipeLeft = pipe.x;
       const pipeRight = pipe.x + PIPE_WIDTH;
-      const pipeTop = pipe.y;
-      const pipeBottom = pipe.y + PIPE_GAP;
+      const pipeTop = pipe.y;  // Top edge of the pipe
+      const pipeBottom = pipe.y + PIPE_GAP;  // Bottom edge of the pipe
 
       // Check if the bird is within the horizontal range of the pipe
       if (birdRight > pipeLeft && birdLeft < pipeRight) {
@@ -125,21 +125,33 @@ const FlappyBirdGame: React.FC = () => {
     setIsGameStarted(true);  // Set the game as started
   };
 
+  // Determine bird rotation based on velocity
+  const getBirdRotation = () => {
+    if (birdVelocity < 0) return 'rotate(-45deg)';  // Flapping up
+    if (birdVelocity > 0) return 'rotate(45deg)';  // Falling down
+    return 'rotate(0deg)';  // Floating
+  };
+
   // Render the game
   return (
-    <Box textAlign="center" mt={4} position="relative" width={`${GAME_WIDTH}px`} height={`${GAME_HEIGHT}px`} bg="blue.200" overflow="hidden">
-      <Text fontSize="xl" mb={4}>Flappy Bird Clone</Text>
+    <Box textAlign="center" mt={4} position="relative" width={`${GAME_WIDTH}px`} height={`${GAME_HEIGHT}px`}
+         bg="blue.200" overflow="hidden">
+      <Text fontSize="xl" mb={4}>Flappy Bird</Text>
       <Text>Score: {score}</Text>
 
-      {/* Render the bird */}
-      <Box
-        position="absolute"
-        left="50px"
-        top={`${birdPosition}px`}
-        width={`${BIRD_SIZE}px`}
-        height={`${BIRD_SIZE}px`}
-        bg="yellow"
-        borderRadius="50%"
+      {/* Render the bird with rotation */}
+      <img
+        src="/miniGames/flappyBird/bird.png"  // Path to your bird image
+        alt="Flappy Bird"
+        style={{
+          position: 'absolute',
+          left: '50px',
+          top: `${birdPosition}px`,
+          width: `${BIRD_SIZE}px`,  // Adjust size if needed
+          height: 'auto',  // Maintain aspect ratio
+          transform: getBirdRotation(),  // Apply rotation based on velocity
+          transition: 'transform 0.1s ease-in-out',  // Smooth transition for rotation
+        }}
       />
 
       {/* Render the pipes */}

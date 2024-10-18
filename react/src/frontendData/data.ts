@@ -155,7 +155,7 @@ export const miniGames: MiniGame[] = [
         id: 4,
         title: "Flappy Bird",
         summary: "Flap your wings and avoid the pipes!",
-        description: "Click or tap to flap your wings and fly through the gaps between the pipes. Don't hit the pipes or the ground!",
+        description: "Click or tap to flap your wings and fly through the gaps between the pipes. Don't hit the pipes or the ground! - P.S. The hit box for the bird is not the greatest, I am still working on that.",
         thumbnail: "/miniGames/thumbnails/flappy-bird.png",
         githubUrl: "https://github.com/Premo14/personal-site/tree/main/react/src/components/projects/miniGames/flappyBird",
         detailsUrl: "flappy-bird",
