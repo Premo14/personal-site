@@ -4,12 +4,12 @@ os: linux
 hooks:
   ApplicationStop:
     # Stop running containers before starting new ones
-    - location: stop-containers.sh
+    - location: scripts/stop-containers.sh
       timeout: 300
       runas: root
 
   ApplicationStart:
     # Start or restart your Docker containers with the new images
-    - location: start-containers.sh
+    - location: scripts/start-containers.sh
       timeout: 300
       runas: root
