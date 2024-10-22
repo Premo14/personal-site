@@ -19,6 +19,7 @@ const MiniGames: React.FC = () => {
         autoPlay
         loop
         muted
+        playsInline
         style={{
           position: "absolute",
           top: 0,
@@ -47,13 +48,13 @@ const MiniGames: React.FC = () => {
         <Flex justifyContent="center" textAlign="center" zIndex={1}>
           <SimpleGrid columns={[1, 2, 3, 4, 5]} spacing={10} mx={10} overflow="hidden">
             {miniGames.map((miniGame) => (
-              <MiniGameSmallCard key={miniGame.detailsUrl} miniGame={miniGame}/>
+              <MiniGameSmallCard key={miniGame.detailsUrl} miniGame={miniGame} />
             ))}
           </SimpleGrid>
         </Flex>
       </Box>
     </Box>
   );
-}
+};
 
 export default MiniGames;

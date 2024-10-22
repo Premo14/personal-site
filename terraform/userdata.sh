@@ -36,15 +36,15 @@ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip
 unzip awscliv2.zip
 sudo ./aws/install
 
-# Install CodeDeploy agent
-sudo apt-get install ruby -y
-cd /home/ubuntu
-wget https://aws-codedeploy-us-east-1.s3.amazonaws.com/latest/install
-chmod +x ./install
-sudo ./install auto
-
-# Start CodeDeploy agent
-sudo service codedeploy-agent start
+### Install CodeDeploy agent
+#sudo apt-get install ruby -y
+#cd /home/ubuntu
+#wget https://aws-codedeploy-us-east-1.s3.amazonaws.com/latest/install
+#chmod +x ./install
+#sudo ./install auto
+#
+### Start CodeDeploy agent
+#sudo service codedeploy-agent start
 
 # Authenticate Docker to ECR
 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 739275461129.dkr.ecr.us-east-1.amazonaws.com
@@ -57,8 +57,6 @@ docker pull mariadb:10
 # Create the 'frontendData' directory
 mkdir -p /home/ubuntu/data
 
- chmod +x scripts/*.sh
-
 # Create the .env file with production environment variables
 cat <<EOT > /home/ubuntu/.env
 MYSQL_ROOT_PASSWORD=rootpass
@@ -67,10 +65,11 @@ MYSQL_USER=user
 MYSQL_PASSWORD=userpass
 MYSQL_PORT=3306
 GO_ENV=production
-VITE_APP_BACKEND_PORT=443
+VITE_APP_BACKEND_PORT=80
 REACT_ENV=production
-VITE_APP_FRONTEND_PORT=80
-VITE_APP_PROTOCOL=https
+VITE_APP_FRONTEND_PORT=443
+VITE_APP_FRONTEND_PROTOCOL=https
+VITE_APP_BACKEND_PROTOCOL=http
 VITE_APP_BASE_URI=premsanity.com
 EOT
 

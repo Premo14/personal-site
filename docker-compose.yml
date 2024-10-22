@@ -8,7 +8,7 @@ services:
       MYSQL_USER: $MYSQL_USER
       MYSQL_PASSWORD: $MYSQL_PASSWORD
     volumes:
-      - mysql-frontendData:/var/lib/mysql
+      - mysql-data:/var/lib/mysql
     networks:
       - app-network
     healthcheck:
@@ -56,7 +56,7 @@ services:
       REACT_ENV: $REACT_ENV
       FRONTEND_PORT: $VITE_APP_FRONTEND_PORT
       VITE_APP_BACKEND_PORT: $VITE_APP_BACKEND_PORT
-      VITE_APP_PROTOCOL: $VITE_APP_PROTOCOL
+      VITE_APP_BACKEND_PROTOCOL: $VITE_APP_BACKEND_PROTOCOL
       VITE_APP_BASE_URI: $VITE_APP_BASE_URI
     command: npm run dev
     networks:
@@ -67,7 +67,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: ./frontendData
+      device: ./data
       o: bind
 
 networks:

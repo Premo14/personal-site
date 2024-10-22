@@ -21,16 +21,6 @@ variable "private_key_path" {
   description = "Path to the private key file for SSH access"
 }
 
-variable "vpc_cidr" {
-  description = "CIDR block for the VPC"
-  default     = "10.0.0.0/16"
-}
-
-variable "subnet_cidr" {
-  description = "CIDR block for the public subnet"
-  default     = "10.0.1.0/24"
-}
-
 variable "mysql_root_password" {
   description = "Root password for MySQL"
   type        = string
@@ -58,11 +48,16 @@ variable "mysql_port" {
 
 variable "vite_app_frontend_port" {
   description = "Frontend port for Vite"
-  default     = 80
+  default     = 443
 }
 
-variable "vite_app_protocol" {
-  description = "Protocol for Vite app (http or https)"
+variable "vite_app_frontend_protocol" {
+  description = "Protocol for Vite app frontend (http or https)"
+  default     = "https"
+}
+
+variable "vite_app_backend_protocol" {
+  description = "Protocol for Vite app backend (http or https)"
   default     = "http"
 }
 
@@ -73,7 +68,7 @@ variable "vite_app_base_uri" {
 
 variable "vite_app_backend_port" {
   description = "Backend port for Vite app"
-  default     = 8080
+  default     = 80
 }
 
 variable "go_env" {
@@ -88,4 +83,8 @@ variable "react_env" {
 
 variable "role" {
   description = "Role for EC2 instance"
+}
+
+variable "certificate_arn" {
+  description = "The ARN of the SSL certificate for HTTPS"
 }

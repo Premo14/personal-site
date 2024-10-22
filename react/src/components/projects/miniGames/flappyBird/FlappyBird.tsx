@@ -8,7 +8,7 @@ const PIPE_WIDTH = 60;
 const PIPE_GAP = 125;
 const GAME_WIDTH = 500;
 const GAME_HEIGHT = 400;
-const FLAP_COOLDOWN = 0;  // Milliseconds of delay after flapping before falling
+const FLAP_COOLDOWN = 25;  // Milliseconds of delay after flapping before falling
 
 const FlappyBirdGame: React.FC = () => {
   const [birdPosition, setBirdPosition] = useState(GAME_HEIGHT / 2);  // Bird starts in the middle
