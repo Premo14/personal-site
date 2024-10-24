@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/gorilla/mux"
 	"github.com/premo14/personal-site/database"
+	"github.com/premo14/personal-site/health"
 	"github.com/premo14/personal-site/todo"
 	"github.com/rs/cors"
 	"log"
@@ -28,6 +29,9 @@ func main() {
 	// Register todo routes
 	todo.RegisterRoutes(router)
 
+	// Register health check route
+	health.RegisterRoutes(router)
+
 	// Serve static files in production
 	if os.Getenv("GO_ENV") == "production" {
 		fs := http.FileServer(http.Dir("./client/dist"))
@@ -36,14 +40,14 @@ func main() {
 
 	frontendPort := os.Getenv("VITE_APP_FRONTEND_PORT")
 	if frontendPort == "" {
-		frontendPort = "443" // Default to 3000 if the variable is not set
+		frontendPort = "80" // Default to 3000 if the variable is not set
 	}
 	backendPort := os.Getenv("VITE_APP_BACKEND_PORT")
 	if backendPort == "" {
-		backendPort = "80"
+		backendPort = "8080"
 	}
 
-	localhostURL := fmt.Sprintf("http://localhost:%s", frontendPort)
+	localhostURL := fmt.Sprint("https://premsanity.dev")
 	httpsWwwDomain := fmt.Sprint("https://www.premsanity.com")
 	httpsDomain := fmt.Sprint("https://premsanity.com")
 

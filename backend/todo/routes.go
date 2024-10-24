@@ -6,10 +6,10 @@ import (
 )
 
 func RegisterRoutes(router *mux.Router) {
-	router.HandleFunc("/api/todos", GetTodos).Methods("GET")
-	router.HandleFunc("/api/todos", CreateTodo).Methods("POST")
-	router.HandleFunc("/api/todos/{id:[0-9]+}", UpdateTodo).Methods("PATCH")
-	router.HandleFunc("/api/todos/{id:[0-9]+}", DeleteTodo).Methods("DELETE")
+	router.HandleFunc("/todos", GetTodos).Methods("GET")
+	router.HandleFunc("/todos", CreateTodo).Methods("POST")
+	router.HandleFunc("/todos/{id:[0-9]+}", UpdateTodo).Methods("PATCH")
+	router.HandleFunc("/todos/{id:[0-9]+}", DeleteTodo).Methods("DELETE")
 }
 
 func Migrate(db *gorm.DB) error {

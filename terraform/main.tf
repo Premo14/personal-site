@@ -135,8 +135,7 @@ resource "aws_instance" "PersonalSiteEC2" {
     MYSQL_PASSWORD           = var.mysql_password,
     MYSQL_PORT               = var.mysql_port,
     VITE_APP_FRONTEND_PORT   = var.vite_app_frontend_port,
-    VITE_APP_BACKEND_PROTOCOL= var.vite_app_backend_protocol,
-    VITE_APP_FRONTEND_PROTOCOL= var.vite_app_frontend_protocol,
+    VITE_APP_PROTOCOL= var.vite_app_protocol,
     VITE_APP_BASE_URI        = var.vite_app_base_uri,
     VITE_APP_BACKEND_PORT    = var.vite_app_backend_port,
     GO_ENV = var.go_env,
@@ -176,22 +175,6 @@ resource "aws_lb" "personal_site_alb" {
 
   tags = {
     Name = "PersonalSiteALB"
-  }
-}
-
-# Listener for HTTP
-resource "aws_lb_listener" "http" {
-  load_balancer_arn = aws_lb.personal_site_alb.arn
-  port              = "80"
-  protocol          = "HTTP"
-
-  default_action {
-    type = "redirect"
-    redirect {
-      port        = "443"
-      protocol    = "HTTPS"
-      status_code = "HTTP_301"
-    }
   }
 }
 
@@ -266,3 +249,8 @@ resource "aws_route53_record" "www_premsanity_com" {
     evaluate_target_health = true
   }
 }
+
+# change frontend port to 80 and backend port to 8080
+# add listener rule to load balancer
+# add target group to rule above on 8080
+# double check local code for correct ports (80 for frontend and 8080 for backend)

@@ -8,7 +8,9 @@ pnpm-debug.log*
 lerna-debug.log*
 
 .env
+nginx.conf
 
+certs
 data
 .terraform
 node_modules

@@ -17,6 +17,9 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o main .
 # Stage 2: Create a minimal image with the built binary
 FROM alpine:3.18
 
+# Install curl
+RUN apk add --no-cache curl
+
 # Set the working directory inside the final container
 WORKDIR /app
 
