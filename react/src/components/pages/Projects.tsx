@@ -14,8 +14,9 @@ const Projects: React.FC = () => {
                     descriptions, photos, and a link to the GitHub repo of
                     each project. I intend on making each project work
                     on this site, but I will be converting them to use the
-                    tools specific to this site. The tools used for this
-                    site can be found in the Personal Site project page below.
+                    tools specific to this site. Dev Tools: Go, GORM, Gorilla
+                    Mux, React, TypeScript, HTML, CSS, ChakraUI, TanStack,
+                    and MariaDB
                 </Text>
             </Flex>
             <Flex justifyContent="center" textAlign="center">

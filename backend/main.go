@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"github.com/gorilla/mux"
 	"github.com/premo14/personal-site/database"
 	"github.com/premo14/personal-site/health"
@@ -9,7 +8,6 @@ import (
 	"github.com/rs/cors"
 	"log"
 	"net/http"
-	"os"
 )
 
 func main() {
@@ -18,45 +16,30 @@ func main() {
 		log.Fatal("Database initialization failed:", err)
 	}
 
-	// Migrate the Todo model (and any future models)
+	// Migrate model(s)
 	if err := todo.Migrate(database.GetDB()); err != nil {
 		log.Fatal("Migration failed:", err)
 	}
 
-	// Initialize the router
+	// Initialize router
 	router := mux.NewRouter()
-
-	// Register todo routes
-	todo.RegisterRoutes(router)
 
 	// Register health check route
 	health.RegisterRoutes(router)
 
-	// Serve static files in production
-	if os.Getenv("GO_ENV") == "production" {
-		fs := http.FileServer(http.Dir("./client/dist"))
-		router.PathPrefix("/").Handler(fs)
-	}
+	// Register to-do routes
+	todo.RegisterRoutes(router)
 
-	frontendPort := os.Getenv("VITE_APP_FRONTEND_PORT")
-	if frontendPort == "" {
-		frontendPort = "80" // Default to 3000 if the variable is not set
-	}
-	backendPort := os.Getenv("VITE_APP_BACKEND_PORT")
-	if backendPort == "" {
-		backendPort = "8080"
-	}
-
-	localhostURL := fmt.Sprint("https://premsanity.dev")
-	httpsWwwDomain := fmt.Sprint("https://www.premsanity.com")
-	httpsDomain := fmt.Sprint("https://premsanity.com")
-
+	// CORS
 	corsHandler := cors.New(cors.Options{
-		AllowedOrigins:   []string{localhostURL, httpsWwwDomain, httpsDomain},
+		AllowedOrigins:   []string{"https://www.premsanity.dev", "https://premsanity.com"},
 		AllowCredentials: true,
 		AllowedMethods:   []string{"GET", "POST", "PATCH", "DELETE", "OPTIONS"},
 		AllowedHeaders:   []string{"Content-Type", "Authorization"},
 	})
+
+	// Define a static port (80) for the backend
+	const backendPort = "80"
 
 	// Start the server with CORS handler
 	log.Printf("Starting server on port %s", backendPort)

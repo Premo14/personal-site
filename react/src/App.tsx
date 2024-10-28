@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Stack } from "@chakra-ui/react";
 import Navbar from "./components/shared/Navbar";
 import Home from "./components/pages/Home";
-import Resume from "./components/pages/Resume";
+import Resume from "./components/pages/Resume/Resume.tsx";
 import Projects from "./components/pages/Projects";
 import Footer from "./components/shared/Footer";
 import ProjectDetails from "./components/projects/ProjectDetails.tsx";

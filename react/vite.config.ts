@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: '0.0.0.0',
-    port: parseInt(process.env.VITE_APP_FRONTEND_PORT || '3000', 10),
+    port: 80,
     watch: {
       usePolling: true,
     },

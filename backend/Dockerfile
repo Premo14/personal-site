@@ -17,17 +17,11 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o main .
 # Stage 2: Create a minimal image with the built binary
 FROM alpine:3.18
 
-# Install curl
-RUN apk add --no-cache curl
-
 # Set the working directory inside the final container
 WORKDIR /app
 
 # Copy the binary from the builder stage
 COPY --from=builder /app/main .
-
-# Expose the port the app runs on
-EXPOSE ${VITE_APP_BACKEND_PORT:-8080}
 
 # Command to run the executable
 CMD ["./main"]

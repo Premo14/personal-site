@@ -1,7 +1,7 @@
 import { Flex, Spinner, Stack, Text } from "@chakra-ui/react";
 import TodoItem from "./TodoItem.tsx";
 import { useQuery } from "@tanstack/react-query";
-import {BASE_URL} from "../../../BASE_URL.tsx";
+import {BACKEND_URL} from "../../../BACKEND_URL.tsx";
 
 export type Todo = {
     id: number;
@@ -13,7 +13,7 @@ const TodoList = () => {
     const { data: todos = [], isLoading, error } = useQuery<Todo[]>({
         queryKey: ["todos"],
         queryFn: async () => {
-            const res = await fetch(`${BASE_URL}/todos`);
+            const res = await fetch(`${BACKEND_URL}/todos`);
             const data = await res.json();
 
             if (!res.ok) {
