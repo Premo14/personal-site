@@ -19,29 +19,23 @@ CMD ["npm", "run", "dev"]
 # ------------------------------
 # Production Build
 # ------------------------------
-# # Stage 1: Build the frontend for production
-# FROM node:18-alpine AS build
+# Stage 1: Build the app
+#FROM node:18-alpine AS build
 #
-# # Set the working directory
-# WORKDIR /app
+#WORKDIR /app
 #
-# # Copy package.json and package-lock.json (or yarn.lock)
-# COPY package*.json ./
+#COPY package*.json ./
+#RUN npm install
+#COPY . .
+#RUN npm run build
 #
-# # Install dependencies
-# RUN npm install
+## Stage 2: Use NGINX to serve the static files
+#FROM nginx:alpine
 #
-# # Copy the rest of the application code
-# COPY . .
+## Copy the custom NGINX configuration file
+#COPY nginx.conf /etc/nginx/conf.d/default.conf
 #
-# # Build the app for production
-# RUN npm run build
+## Copy the built files from the previous stage
+#COPY --from=build /app/dist /usr/share/nginx/html
 #
-# # Stage 2: Use Nginx to serve the static files
-# FROM nginx:alpine
-#
-# # Copy the built files from the previous stage
-# COPY --from=build /app/dist /usr/share/nginx/html
-#
-# # Start Nginx server
-# CMD ["nginx", "-g", "daemon off;"]
+#CMD ["nginx", "-g", "daemon off;"]

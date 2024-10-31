@@ -1,7 +1,6 @@
 package database
 
 import (
-	"database/sql"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"gorm.io/driver/mysql"
@@ -12,21 +11,25 @@ import (
 )
 
 var DB *gorm.DB
+var err error
 
 func InitDatabase() error {
 	dbUser := os.Getenv("MYSQL_USER")
 	dbPassword := os.Getenv("MYSQL_PASSWORD")
-	dbHost := os.Getenv("MYSQL_HOST")
+	dbHost := "mysql"
 	dbPort := os.Getenv("MYSQL_PORT")
 	dbName := os.Getenv("MYSQL_DATABASE")
+	viteAppEnv := os.Getenv("VITE_APP_ENV")
 
 	// DSN without the database name to create the database if it doesn't exist
 	dsnWithoutDB := dbUser + ":" + dbPassword + "@tcp(" + dbHost + ":" + dbPort + ")/?timeout=5s"
 
-	// Create the database if it doesn't exist
-	err := createDatabaseIfNotExists(dsnWithoutDB, dbName)
-	if err != nil {
-		return fmt.Errorf("failed to create database: %w", err)
+	// Create the database if it doesn't exist using GORM Exec
+	if viteAppEnv == "dev" {
+		err := createDatabaseIfNotExists(dsnWithoutDB, dbName)
+		if err != nil {
+			return fmt.Errorf("failed to create database: %w", err)
+		}
 	}
 
 	// DSN with the database name to connect after creation
@@ -48,22 +51,22 @@ func InitDatabase() error {
 	return fmt.Errorf("failed to connect to MySQL after %d attempts", retryCount)
 }
 
-// createDatabaseIfNotExists checks if the database exists, and if not, creates it.
 func createDatabaseIfNotExists(dsn, dbName string) error {
-	// Connect to MySQL without a database specified
-	sqlDB, err := sql.Open("mysql", dsn)
+	// Open a GORM connection without specifying a database
+	tempDB, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		return fmt.Errorf("unable to connect to MySQL: %w", err)
 	}
-	defer func(sqlDB *sql.DB) {
+	defer func() {
+		sqlDB, _ := tempDB.DB()
 		err := sqlDB.Close()
 		if err != nil {
-			fmt.Println("Error closing DB")
+			log.Fatal("Error closing database connection:", err)
 		}
-	}(sqlDB)
+	}()
 
-	// Check if the database exists
-	_, err = sqlDB.Exec("CREATE DATABASE IF NOT EXISTS `" + dbName + "`")
+	// Use GORM to execute a raw SQL command to create the database if it doesn't exist
+	err = tempDB.Exec("CREATE DATABASE IF NOT EXISTS `" + dbName + "`").Error
 	if err != nil {
 		return fmt.Errorf("unable to create database %s: %w", dbName, err)
 	}

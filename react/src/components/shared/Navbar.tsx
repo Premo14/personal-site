@@ -18,10 +18,9 @@ export default function Navbar() {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const sidebarRef = useRef<HTMLDivElement | null>(null);
 
-    // Colors based on the requested changes
     const bgColor = useColorModeValue("gray.400", "gray.700");
     const buttonBgColor = "transparent";
-    const sidebarBgColor = "#1a1a1a"; // Very dark gray, almost black
+    const sidebarBgColor = "#1a1a1a";
 
     // Close sidebar on Escape key press or outside click
     useEffect(() => {
@@ -65,11 +64,11 @@ export default function Navbar() {
                 onClick={isOpen ? onClose : onOpen}
                 bg={buttonBgColor}
                 color="white"
-                _hover={{ color: "blue.400", bg: "transparent" }} // Change icon color to blue on hover, remove bg
-                padding={1} // Reduce padding for better centering
+                _hover={{ color: "blue.400", bg: "transparent" }}
+                padding={1}
                 alignItems="center"
                 justifyContent="center"
-                fontSize="1.5rem" // Increase icon size if necessary
+                fontSize="1.5rem"
               />
 
               {/* Desktop Menu */}

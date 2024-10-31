@@ -10,9 +10,9 @@ const MiniGames: React.FC = () => {
   return (
     <Box
       position="relative"
-      height="100vh"
-      width="100vw"
-      overflow="hidden"
+      minHeight="100vh"
+      width="100%"
+      overflow="visible"
     >
       {/* Video Background */}
       <video
@@ -20,8 +20,9 @@ const MiniGames: React.FC = () => {
         loop
         muted
         playsInline
+        preload="auto"
         style={{
-          position: "absolute",
+          position: "fixed",
           top: 0,
           left: 0,
           width: "100%",
@@ -35,13 +36,13 @@ const MiniGames: React.FC = () => {
         Your browser does not support the video tag.
       </video>
 
-      <Box zIndex={10}>
+      <Box zIndex={10} overflowY="scroll">
         {/* Content Overlay */}
         <Button m={4} onClick={() => navigate("/projects")} zIndex={1} background="black">
           Back to Projects
         </Button>
         <Flex justifyContent="center" textAlign="center" zIndex={1} mb={5}>
-          <Text m={4} fontSize="x-large" maxW="1000px" minW="700px">
+          <Text m={4} fontSize="x-large" maxW="1000px">
             Welcome to the arcade! Cheaters will be dealt with accordingly.
           </Text>
         </Flex>

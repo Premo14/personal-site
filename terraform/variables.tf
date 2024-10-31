@@ -46,33 +46,13 @@ variable "mysql_port" {
   default     = 3306
 }
 
-variable "vite_app_frontend_port" {
-  description = "Frontend port for Vite"
-  default     = 80
-}
-
-variable "vite_app_protocol" {
-  description = "Protocol for Vite app (http or https)"
-  default     = "https"
-}
-
-variable "vite_app_base_uri" {
-  description = "Base URI for Vite app"
-  default     = "api.premsanity.com"
-}
-
-variable "vite_app_backend_port" {
-  description = "Backend port for Vite app"
+variable "backend_port" {
+  description = "Backend port"
   default     = 8080
 }
 
-variable "go_env" {
-  description = "Environment in prod of dev"
-  default = "production"
-}
-
-variable "react_env" {
-  description = "Environment in prod of dev"
+variable "vite_app_env" {
+  description = "Environment is prod or dev"
   default = "production"
 }
 

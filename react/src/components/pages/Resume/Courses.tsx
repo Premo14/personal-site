@@ -1,4 +1,3 @@
-// Courses.tsx
 import React, { useState } from 'react';
 import {
   Box,
@@ -38,7 +37,6 @@ const Courses: React.FC = () => {
     onDescriptionModalOpen();
   };
 
-  // Responsive modal sizes
   const modalSize = useBreakpointValue({ base: "xs", md: "lg" });
 
   return (

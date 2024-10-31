@@ -7,7 +7,7 @@ const Projects: React.FC = () => {
     return (
         <Box mb={5}>
             <Flex justifyContent="center" textAlign="center" zIndex={1} mb={5}>
-                <Text m={4} fontSize="x-large" maxW="1000px" minW="700px">
+                <Text m={4} fontSize="x-large" maxW="1000px">
                     These projects are written in many different languages
                     and use various different tools. For that reason, not
                     all projects will run, for said projects, I will have

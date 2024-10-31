@@ -8,12 +8,12 @@ import (
 
 func CheckHealthHandler(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
-	_, err := w.Write([]byte("Service is healthy"))
+	_, err := w.Write([]byte("Service is healthy\n"))
 	if err != nil {
 		log.Println("Error in Health Check Handler:", err)
 	}
 }
 
 func RegisterRoutes(router *mux.Router) {
-	router.HandleFunc("/health", CheckHealthHandler).Methods("GET")
+	router.HandleFunc("/health", CheckHealthHandler).Methods("GET", "HEAD")
 }
