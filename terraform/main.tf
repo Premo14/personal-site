@@ -36,6 +36,16 @@ resource "aws_security_group_rule" "allow_http_from_alb" {
   description              = "Allow HTTP traffic from ALB"
 }
 
+resource "aws_security_group_rule" "allow_backend_from_alb" {
+  type                     = "ingress"
+  from_port                = 8080
+  to_port                  = 8080
+  protocol                 = "tcp"
+  security_group_id        = aws_security_group.allow_http_https_ssh.id
+  source_security_group_id = aws_security_group.alb_security_group.id
+  description              = "Allow backend traffic from ALB on port 8080"
+}
+
 # IAM instance profile
 resource "aws_iam_instance_profile" "PersonalSiteInstanceProfile" {
   name = "PersonalSiteInstanceProfile"

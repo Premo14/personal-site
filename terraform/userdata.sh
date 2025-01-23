@@ -28,8 +28,8 @@ unzip awscliv2.zip && sudo ./aws/install
 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 739275461129.dkr.ecr.us-east-1.amazonaws.com
 
 # Pull Docker images from ECR and Docker Hub
-docker pull 739275461129.dkr.ecr.us-east-1.amazonaws.com/personal-site:backend-latest
-docker pull 739275461129.dkr.ecr.us-east-1.amazonaws.com/personal-site:frontend-latest
+docker pull 739275461129.dkr.ecr.us-east-1.amazonaws.com/personal-site:backend
+docker pull 739275461129.dkr.ecr.us-east-1.amazonaws.com/personal-site:frontend
 docker pull mariadb:10
 
 mkdir -p /home/ubuntu/data
@@ -75,7 +75,7 @@ services:
 
   backend:
     container_name: backend
-    image: 739275461129.dkr.ecr.us-east-1.amazonaws.com/personal-site:backend-latest
+    image: 739275461129.dkr.ecr.us-east-1.amazonaws.com/personal-site:backend
     ports:
       - "8080:8080"
     environment:
@@ -94,7 +94,7 @@ services:
 
   frontend:
     container_name: frontend
-    image: 739275461129.dkr.ecr.us-east-1.amazonaws.com/personal-site:frontend-latest
+    image: 739275461129.dkr.ecr.us-east-1.amazonaws.com/personal-site:frontend
     ports:
       - "80:80"
     environment:

@@ -49,10 +49,14 @@ const Resume: React.FC = () => {
                       Professional Summary
                   </Heading>
                   <Text>
-                      Innovative software engineer with strong foundations in computer
-                      science. Proficient in multiple programming languages and
-                      frameworks, with dedication to delivering high-quality software
-                      solutions.
+                      Full Stack Software Engineer with a solid foundation in computer science
+                      and hands-on experience in full-stack development. Proficient in Go, React,
+                      TypeScript, and AWS, with expertise in databases such as MySQL and MongoDB.
+                      Skilled in developing and maintaining web applications, collaborating within
+                      SCRUM teams, and implementing agile methodologies to deliver scalable and
+                      efficient solutions. Certified in Golang Bootcamp and holding a BS in
+                      Software Engineering. Committed to learning and eager to contribute to
+                      innovative projects.
                   </Text>
               </Box>
 
@@ -74,9 +78,15 @@ const Resume: React.FC = () => {
                       Skills
                   </Heading>
                   <Text>
-                      Go, TypeScript/JavaScript, HTML, CSS, Gorilla Mux, GORM, ChakraUI,
-                      React, TanStack, Vite, NodeJS, MySQL, Docker, Git, Linux, Terraform,
-                      AWS, Postman
+                      <Text as="span" fontWeight="bold">
+                          Most Familiar Tools:
+                      </Text>{' '}
+                      Go, Java, Spring/Boot, React, Angular, Node.js, TypeScript, JavaScript, HTML, CSS, SQL DBs, GitHub, Docker, Postman, AWS, Terraform, CI/CD, Jira, RESTful APIs
+                      <br />
+                      <Text as="span" fontWeight="bold">
+                          Less Familiar Tools:
+                      </Text>{' '}
+                      Python, PHP, Kotlin, Mobile Dev, C-like, Laravel, Testing, NoSQL DBs
                   </Text>
               </Box>
 
@@ -102,6 +112,59 @@ const Resume: React.FC = () => {
                   <Heading as="h2" size="lg" mb={2}>
                       Professional Experience
                   </Heading>
+                  <Text fontWeight="bold">Full Stack Software Engineer</Text>
+                  <Text mb={2}>
+                      <Link
+                        href="https://revature.com"
+                        isExternal
+                        fontWeight="bold"
+                      >
+                          Revature
+                      </Link>{' '}
+                      (Location Varies) - Dec/2024 - Present
+                  </Text>
+                  <Text mb={4}>
+                      <Text>• Develop and maintain full-stack applications for a variety of clients across different industries, utilizing a wide range of programming languages, frameworks, and tools.</Text>
+                      <Text>• Collaborate with cross-functional teams to deliver high-quality software solutions, adapting to diverse project requirements and client specifications.</Text>
+                      <Text>• Manage end-to-end development processes, from requirements gathering to deployment, while ensuring scalability, performance, and security.</Text>
+                  </Text>
+
+                  <Text fontWeight="bold">Senior Full Stack Engineer</Text>
+                  <Text mb={2}>
+                      <Link
+                        href="https://www.linkedin.com/company/impression.artwork/posts/?feedView=all"
+                        isExternal
+                        fontWeight="bold"
+                      >
+                          Revature
+                      </Link>{' '}
+                      (Location Varies) - May/2024 - Present
+                  </Text>
+                  <Text mb={4}>
+                      <Text>• Helped streamline development by implementing tools like Docker and Terraform.</Text>
+                      <Text>• Oversee developer progress, help where help is needed, and assign tasks to developers.</Text>
+                      <Text>• Setup project working environments using MERN stack (Mongo, Express, React/React Native, Node.js).</Text>
+                  </Text>
+
+                  <Text fontWeight="bold">Software Development Tutoring</Text>
+                  <Text mb={2}>Self Employment (Remote) - Aug/2019 – Aug/2024</Text>
+                  <Text mb={4}>
+                      <Text as="span" fontWeight="bold">
+                          • Frontend Development:
+                      </Text>{' '}
+                      Designed and built responsive user interfaces using HTML, CSS, JavaScript/TypeScript, and React, improving UI/UX and engagement for web applications.
+                      <br />
+                      <Text as="span" fontWeight="bold">
+                          • Backend Development:
+                      </Text>{' '}
+                      Developed and maintained server-side logic and RESTful APIs, ensuring seamless integration with frontend components.
+                      <br />
+                      <Text as="span" fontWeight="bold">
+                          • Database Management:
+                      </Text>{' '}
+                      Managed and optimized relational and non-relational databases using SQL and No-SQL databases, ensuring data integrity, security, and high performance.
+                  </Text>
+
                   <Text fontWeight="bold">Software Engineer</Text>
                   <Text mb={2}>
                       <Link
@@ -111,15 +174,16 @@ const Resume: React.FC = () => {
                       >
                           UpNCoding
                       </Link>{' '}
-                      (Remote) - Dec/2023 – Present
+                      (Remote) - Dec/2023 – June/2024
                   </Text>
                   <Text mb={4}>
-                      • Develop and support a tourist guidance app, enhancing user
-                      engagement and experience using Laravel/PHP, Kotlin, Angular,
-                      Docker, and MySQL. • Collaborate in a SCRUM team to ensure prompt
-                      delivery and continuous improvement through iterative development
-                      cycles.
+                      <Text>• Develop and support a tourist guidance app, enhancing user
+                          engagement and experience using Laravel/PHP, Kotlin, Angular,
+                          Docker, and MySQL.</Text>
+                      <Text>• Collaborate in a SCRUM team to ensure prompt delivery and
+                          continuous improvement through iterative development cycles.</Text>
                   </Text>
+
                   <Text fontWeight="bold">IT Technician</Text>
                   <Text mb={2}>
                       <Link
@@ -132,18 +196,10 @@ const Resume: React.FC = () => {
                       (St Regis Falls, NY) - July/2022 – Sept/2022
                   </Text>
                   <Text mb={4}>
-                      • Managed maintenance, installation, and troubleshooting of PCs,
-                      networks, and mobile devices, improving operational efficiency. •
-                      Delivered technical support and resolved software installation
-                      issues, enhancing user satisfaction.
-                  </Text>
-                  <Text fontWeight="bold">Freelance Software Developer</Text>
-                  <Text mb={2}>Self Employment (Remote) - Aug/2019 – Present</Text>
-                  <Text>
-                      • Developed web and mobile applications using HTML, CSS,
-                      JavaScript, and Angular. Managed databases with MySQL and MongoDB.
-                      Collaborated with clients, implemented RESTful APIs, conducted
-                      manual testing, and used Git for version control.
+                      <Text>• Managed maintenance, installation, and troubleshooting of PCs,
+                          networks, and mobile devices, improving operational efficiency.</Text>
+                      <Text>• Delivered technical support and resolved software installation
+                          issues, enhancing user satisfaction.</Text>
                   </Text>
               </Box>
 
